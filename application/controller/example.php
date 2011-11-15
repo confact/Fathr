@@ -3,7 +3,7 @@ class Example extends Controller {
 
 	function index() {
 		echo "it Works!";
-		echo "<br /><a href='?page=example/newpage'>how a other function can work</a>";
+		echo "<br /><a href='example/newpage'>how a other function can work</a>";
 	}
 	
 	public function newpage() {
