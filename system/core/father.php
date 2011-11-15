@@ -18,7 +18,7 @@ class Father {
 
 	public function run()
 	{
-		if(isset($this->url[0])) {
+		if($this->url[0] == "") {
 			require_once($this->controllerpath . $this->defaultcontroller . '.php');
 			$this->controllername = ucfirst($this->defaultcontroller);
 			$this->controller = new $this->controllername();
