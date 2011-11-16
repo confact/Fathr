@@ -23,6 +23,12 @@ class Example extends Controller {
 	public function testview() {
 		$this->load->view("test");
 	}
+	
+	public function testhelper() {
+		$this->load->helper("session");
+		$this->session->setUser("test", "testar");
+		echo $this->session->getuser("test");
+	}
 
 }
 ?>
