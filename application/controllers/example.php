@@ -20,6 +20,11 @@ class Example extends Controller {
 		$fathr->load->model("user");
 		$fathr->user->test();
 	}
+	
+	public function testview() {
+		global $fathr;
+		$fathr->load->view("test");
+	}
 
 }
 ?>

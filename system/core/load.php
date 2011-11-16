@@ -4,8 +4,9 @@ class load
 	
 	function view($name)
 	{
-		if(file_exists($config['applicationpath'] . '/views/' . $name . '.php')) {
-			include($config['applicationpath'] . '/views/' . $name . '.php');
+		global $fathr;
+		if(file_exists($fathr->config['applicationpath'] . '/views/' . $name . '.php')) {
+			include($fathr->config['applicationpath'] . '/views/' . $name . '.php');
 		}
 	}
 	
