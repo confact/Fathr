@@ -4,7 +4,7 @@ class Controller {
 	
 	function __construct()
 	{
-		$this->load = new load($this);
+		$this->load = new load(&$this);
 	}
 }
 ?>

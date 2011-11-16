@@ -3,6 +3,7 @@ class Father {
 	private static $father;
 	
 	public $config = "";
+	public $db;
 	
 	function __construct()
 	{

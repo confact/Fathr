@@ -14,13 +14,13 @@ class load
 		}
 	}
 	
-	function model($name)
+	function model($name, $db = false)
 	{
 		global $fathr;
 		if(file_exists($fathr->config['applicationpath'] . '/models/' . $name . '.php')) {
 			include($fathr->config['applicationpath'] . '/models/' . $name . '.php');
 			$modelname = ucfirst($name);
-			$this->contr->$name = new $modelname();
+			$this->contr->$name = new $modelname($db);
 		}
 	}
 		
@@ -29,8 +29,16 @@ class load
 		global $fathr;
 		if(file_exists('system/helpers/' . $name . '.php')) {
 			include('system/helpers/' . $name . '.php');
-			$modelname = ucfirst($name);
-			$this->contr->$name = new $modelname();
+			if($name == "db")
+			{
+				$modelname = ucfirst($name);
+				$fathr->db = new $modelname();
+				$this->contr->$name = &$fathr->db;
+			}
+			else {
+				$modelname = ucfirst($name);
+				$this->contr->$name = new $modelname();
+			}
 		}
 	}
 }
