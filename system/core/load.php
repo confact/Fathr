@@ -4,16 +4,16 @@ class load
 	
 	function view($name)
 	{
-		if(file_exists($config['applicationpath'] . '/view/' . $name . '.php')) {
-			include($config['applicationpath'] . '/view/' . $name . '.php');
+		if(file_exists($config['applicationpath'] . '/views/' . $name . '.php')) {
+			include($config['applicationpath'] . '/views/' . $name . '.php');
 		}
 	}
 	
 	function model($name)
 	{
 		global $fathr;
-		if(file_exists($fathr->config['applicationpath'] . '/model/' . $name . '.php')) {
-			include($fathr->config['applicationpath'] . '/model/' . $name . '.php');
+		if(file_exists($fathr->config['applicationpath'] . '/models/' . $name . '.php')) {
+			include($fathr->config['applicationpath'] . '/models/' . $name . '.php');
 			$modelname = ucfirst($name);
 			$fathr->$name = new $modelname();
 		}
@@ -22,8 +22,8 @@ class load
 	function helper($name)
 	{
 		global $fathr;
-		if(file_exists('system/helper/' . $name . '.php')) {
-			include('system/helper/' . $name . '.php');
+		if(file_exists('system/helpers/' . $name . '.php')) {
+			include('system/helpers/' . $name . '.php');
 			$modelname = ucfirst($name);
 			$fathr->$name = new $modelname();
 		}

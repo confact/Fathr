@@ -9,7 +9,7 @@ class loader {
 	public function __construct()
 	{	
 		global $fathr;
-		$this->controllerpath = $fathr->config['applicationpath'] . '/controller/';
+		$this->controllerpath = $fathr->config['applicationpath'] . '/controllers/';
 		$this->defaultcontroller = $fathr->config['default_controller'];
 		$this->url = $this->seperatenames($_GET['page']);
 	}
