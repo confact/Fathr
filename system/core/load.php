@@ -20,7 +20,9 @@ class load
 		if(file_exists($fathr->config['applicationpath'] . '/models/' . $name . '.php')) {
 			include($fathr->config['applicationpath'] . '/models/' . $name . '.php');
 			$modelname = ucfirst($name);
-			$this->contr->$name = new $modelname($db);
+			if(!isset($this->contr->$name)) {
+				$this->contr->$name = new $modelname($db);
+			}
 		}
 	}
 		
@@ -37,7 +39,9 @@ class load
 			}
 			else {
 				$modelname = ucfirst($name);
-				$this->contr->$name = new $modelname();
+				if(!isset($this->contr->$name)) {
+					$this->contr->$name = new $modelname();
+				}
 			}
 		}
 	}
