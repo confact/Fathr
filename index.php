@@ -1,7 +1,8 @@
 <?php
 require_once('config/config.php');
-require_once('system/core/father.php');
+require_once('system/core/boot.php');
 
-$Father = new Father($config);
+$fathr = Father::instance();
+$Father = new loader();
 $Father->run();
 ?>
