@@ -14,6 +14,10 @@ class Example extends Controller {
 	public function newpage() {
 		echo "new page";
 	}
+	public function testconfig() {
+		echo "You can now get the configs directly in controller. (db_config is secret)<br />";
+		echo "config['applicationpath'] = " . $this->config['applicationpath'];
+	}
 	
 	public function testmodel() {
 		$this->load->model("user");
