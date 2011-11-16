@@ -9,6 +9,7 @@ class db {
 		$this->instance = &$this;
 		global $db_config;
 		$this->config = $db_config;
+		unset($db_config);
 		$this->conn = mysql_connect($this->config['db_host'], $this->config['db_user'], $this->config['db_password'])
     or die('Could not connect: ' . mysql_error());
     	mysql_select_db($this->config['db_dbname'], $this->conn) or die('Could not select database');
