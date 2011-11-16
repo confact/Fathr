@@ -16,14 +16,12 @@ class Example extends Controller {
 	}
 	
 	public function testmodel() {
-		global $fathr;
-		$fathr->load->model("user");
-		$fathr->user->test();
+		$this->load->model("user");
+		$this->user->test();
 	}
 	
 	public function testview() {
-		global $fathr;
-		$fathr->load->view("test");
+		$this->load->view("test");
 	}
 
 }

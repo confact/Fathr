@@ -4,8 +4,7 @@ class Controller {
 	
 	function __construct()
 	{
-		global $fathr;
-		$fathr->load = new load();
+		$this->load = new load($this);
 	}
 }
 ?>

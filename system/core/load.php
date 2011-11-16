@@ -1,6 +1,10 @@
 <?php
 class load
 {
+
+	function __construct(&$controller) {
+		$this->contr = &$controller;
+	}
 	
 	function view($name)
 	{
@@ -16,7 +20,7 @@ class load
 		if(file_exists($fathr->config['applicationpath'] . '/models/' . $name . '.php')) {
 			include($fathr->config['applicationpath'] . '/models/' . $name . '.php');
 			$modelname = ucfirst($name);
-			$fathr->$name = new $modelname();
+			$this->contr->$name = new $modelname();
 		}
 	}
 		
@@ -26,7 +30,7 @@ class load
 		if(file_exists('system/helpers/' . $name . '.php')) {
 			include('system/helpers/' . $name . '.php');
 			$modelname = ucfirst($name);
-			$fathr->$name = new $modelname();
+			$this->contr->$name = new $modelname();
 		}
 	}
 }
