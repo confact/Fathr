@@ -45,5 +45,19 @@ class load
 			}
 		}
 	}
+	
+	function theme($theme = null)
+	{
+		global $fathr;
+		if(!isset($fathr->theme)) {
+			if($theme != null) {
+				$father->theme = new Theme($theme);
+			}
+			else {
+				$father->theme = new Theme();
+			}
+		}
+		$this->contr->theme = &$father->theme;
+	}
 }
 ?>
