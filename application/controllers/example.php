@@ -33,6 +33,24 @@ class Example extends Controller {
 		$this->session->setUser("test", "testar");
 		echo $this->session->getuser("test");
 	}
+	
+	public function testarguments($arg1, $arg2) {
+		echo "This framework only support 2 arguments for now..<br />";
+		echo $arg1." - ".$arg2;
+	}
+	public function testtheme() {
+		$this->load->theme();
+		$this->theme->setPageTitle("Fathr Title");
+		$this->theme->setHeaderTitle("Fathr Header");
+		$this->theme->setMain("test");
+		$this->theme->render();
+	}
+	
+	public function testfails() {
+		echo "This calls will fail because i haven't load them in the function:<br />";
+		//$this->user->test();
+		//echo $this->session->getuser("test");
+	}
 
 }
 ?>
