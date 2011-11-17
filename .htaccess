@@ -1,11 +1,10 @@
-Options +FollowSymlinks
-RewriteEngine on
+# BEGIN Fathr
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*) index.php?page=$1 [L]
+</IfModule>
 
-RewriteBase /~confacted/framework
-
-RewriteCond %{REQUEST_FILENAME} -s [OR]
-RewriteCond %{REQUEST_FILENAME} -l [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-
-RewriteRule ^.*$ - [NC,L]
-RewriteRule ^(.*)$ index.php?page=$1 [L]
+# END Fathr
