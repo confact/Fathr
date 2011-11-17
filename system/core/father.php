@@ -4,10 +4,11 @@ class Father {
 	
 	public $config = "";
 	public $db;
+	public $theme;
 	
 	function __construct()
 	{
-		$fathr = &$this;
+		$this->father = &$this;
 		global $config;
 		$this->config = $config;
 	}
