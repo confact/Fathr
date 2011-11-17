@@ -3,5 +3,6 @@ require_once('loader.php');
 require_once('load.php');
 require_once("father.php");
 require_once('controller.php');
-require_once('Model.php');
+require_once('model.php');
+require_once('theme.php');
 ?>
