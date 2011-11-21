@@ -1,5 +1,6 @@
 <?php
 class Model {
+	public $load;
 	
 	function __construct($db = false)
 	{
@@ -15,6 +16,7 @@ class Model {
 			}
 			$this->db = &$fathr->db;
 		}
+		$this->load = new load(&$this);
 	}
 }
 ?>

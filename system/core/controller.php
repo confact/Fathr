@@ -1,6 +1,6 @@
 <?php
 class Controller {
-	public $load = "";
+	public $load;
 	
 	function __construct()
 	{
