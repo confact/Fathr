@@ -1,4 +1,6 @@
 <?php
+// This is the start field for Fathr.
+// DON'T CHANGE HERE IF YOU DON'T KNOW WHAT YOU DO!
 require_once('config/config.php');
 if($config['developmentmode'])
 {

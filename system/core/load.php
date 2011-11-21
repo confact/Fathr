@@ -1,7 +1,7 @@
 <?php
 class load
 {
-
+// The class that helps the user to load helpers, models and views very easy, by calling this functions bellow.
 	function __construct(&$controller) {
 		$this->contr = &$controller;
 	}

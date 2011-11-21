@@ -1,5 +1,6 @@
 <?php
 class Controller {
+	//A simple core-controller your controller MUST extend to get the configs and the load features.
 	public $load;
 	
 	function __construct()

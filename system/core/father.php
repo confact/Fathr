@@ -1,5 +1,6 @@
 <?php
 class Father {
+// The Fathr class, the singleton that will hold the important stuff in the framework.
 	private static $father;
 	
 	public $config = "";

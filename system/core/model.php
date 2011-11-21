@@ -1,5 +1,6 @@
 <?php
 class Model {
+// the core-model which your models MUST extend. Adding support for database automatically and load of course.
 	public $load;
 	
 	function __construct($db = false)

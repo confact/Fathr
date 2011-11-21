@@ -1,6 +1,7 @@
 <?php
 class Session {
-
+	// This is the helper that will help you with the communication, save and removal for the session cookies.
+	// This helper is tested.
 	function __construct()
 	{
 		session_start();

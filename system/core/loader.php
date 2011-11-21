@@ -1,5 +1,6 @@
 <?php
 class loader {
+// More or less the real father. This load, fix uri and make the framework alive on the page.
 	public $defaultcontroller = "";
 	public $controllername = "";
 	public $controller = "";

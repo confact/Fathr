@@ -1,5 +1,7 @@
 <?php
 class Theme {
+// The engine that will be the theme engine. This works halfly so don't trust it in 100% yet.
+
 	public $theme; // which theme do you want to use? send this in the construct. default: default.
 	public $sitepath; // the path to the site (for css).
 	public $split = true; // shall we split header, footer and main in three different files? default: true.

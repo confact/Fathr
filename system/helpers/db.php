@@ -1,5 +1,7 @@
 <?php
 class db {
+	// This is the helper that will help you with the connection and communication to the database.
+	// This helper is not tested!
 	private static $instance = "";
 	private $conn = "";
 	private $config = array();
@@ -15,6 +17,13 @@ class db {
     	mysql_select_db($this->config['db_dbname'], $this->conn) or die('Could not select database');
 	}
 	
+	function open()
+	{
+		$this->conn = mysql_connect($this->config['db_host'], $this->config['db_user'], $this->config['db_password'])
+    or die('Could not connect: ' . mysql_error());
+    	mysql_select_db($this->config['db_dbname'], $this->conn) or die('Could not select database');
+	}
+	
 	static function instance()
 	{
 		if (!isset(self::$instance)) {
@@ -25,16 +34,16 @@ class db {
 	
 	function query($string)
 	{
-		mysql_query($string, $this->conn);
+		return mysql_query($string, $this->conn);
 	}
 	
 	function get($tablename, $limit = null) {
 		if($limit)
 		{
-			mysql_query("SELECT * FROM ".$tablename." LIMIT ".$limit, $this->conn);
+			return mysql_query("SELECT * FROM ".$tablename." LIMIT ".$limit, $this->conn);
 		}
 		else {
-			mysql_query("SELECT * FROM ".$tablename, $this->conn);
+			return mysql_query("SELECT * FROM ".$tablename, $this->conn);
 		}
 	}
 	
