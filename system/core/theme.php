@@ -35,6 +35,17 @@ class Theme {
 	{
 		$this->menu = $menu;
 	}
+	//want to add the content of the view into the theme? use this then.
+	function setMainView($viewname)
+	{
+		global $fathr;
+		if(file_exists($fathr->config['applicationpath'] . '/views/' . $viewname . '.php')) {
+			$this->setMain(file_get_contents($fathr->config['applicationpath'] . '/views/' . $viewname . '.php'));
+		}
+		else {
+			$this->setMain("the view ".$viewname." couldn't be found");
+		}
+	}
 	function setFooter($footer)
 	{
 		$this->footer = $footer;
