@@ -5,6 +5,7 @@ class Theme {
 	public $theme; // which theme do you want to use? send this in the construct. default: default.
 	public $sitepath; // the path to the site (for css).
 	public $split = true; // shall we split header, footer and main in three different files? default: true.
+	//if you don't want to have it splitted, change to falls and add everything to main.php in theme-directory.
 	public $pagetitle = "Title"; // The title for the page. default: empty.
 	public $pageheadertitle = ""; // the title in header. default: empty.
 	public $pageheadercaption = ""; // the undertext in header. default: empty.
@@ -75,9 +76,14 @@ class Theme {
 	// Render the site
 	function render()
 	{
-		$this->getHeader();
-		$this->getMain();
-		$this->getFooter();
+		if($this->split) {
+			$this->getHeader();
+			$this->getMain();
+			$this->getFooter();
+		}
+		else {
+			$this->getMain();
+		}
 	}
 }
 ?>
