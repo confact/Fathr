@@ -1,0 +1,21 @@
+@import url(http://fonts.googleapis.com/css?family=Merienda+One);
+nav ul li {
+	float:left;
+	list-style: none;
+	margin-right:5px;
+	display:block;
+}
+#header {
+	margin-top:10px;
+}
+h1 {
+	font-family: "Merienda One";
+}
+.main {
+	margin-bottom:6px;
+}
+nav, #menu {
+	border-top: 1px solid #DDDDDD;
+	padding-top:6px;
+	padding-bottom: 6px;
+}

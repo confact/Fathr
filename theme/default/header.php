@@ -16,18 +16,17 @@
     	<!--[if IE]><link rel="stylesheet" href="/<?=$this->sitepath?>/theme/core/blueprint/ie.css" type="text/css" media="screen, projection" /><![endif]-->  
   
     	<!-- Import fancy-type plugin. -->  
-    	<link rel="stylesheet" href="/<?=$this->sitepath?>/theme/core/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection" /> 
+    	<link rel="stylesheet" href="/<?=$this->sitepath?>/theme/core/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection" />
+    	<?php if($this->stylesheet) {
+    	?><link rel="stylesheet" href="/<?=$this->sitepath?>/theme/<?=$this->theme?>/<?=$this->stylesheet?>.css" type="text/css" media="screen, projection" /><?
+    	}
+    	?>
 	</head>
 	<body>
 	<div class="container">
 		<div id="header" class="span-24 last">
-			<h1 class="span-24 last"><?=$this->pageheadertitle?></h1>
-			<hr />
-        	<div id="subheader" class="span-24 last">
-         		<h3 class="alt"><?=$this->pageheadercaption?></h3>
-        	</div>
-        	<hr />
-			<div class="menu">
+			<h1><?=$this->pageheadertitle?></h1>
+			<nav id="menu" class="span-24 last">
 			<?php
 			if(is_array($this->menu))
 			{
@@ -41,5 +40,6 @@
 				?></ul><?
 				}
 				?>
-			</div>
+			</nav>
+        	<hr />
 		</div>
