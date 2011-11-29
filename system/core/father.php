@@ -6,7 +6,7 @@ class Father {
 	public $config = "";
 	public $db;
 	public $theme;
-	public $loader;
+	private $loader;
 	
 	function __construct()
 	{
