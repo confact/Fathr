@@ -14,5 +14,6 @@ $config['applicationpath'] = "application";
 // This is the default controller you will use if no page is set
 $config['default_controller'] = "example";
 
-require_once('config/db.php');
+// use front controller/theme engine directly from the core?
+$config['theme_from_core'] = true;
 ?>

@@ -6,12 +6,15 @@ class Father {
 	public $config = "";
 	public $db;
 	public $theme;
+	public $loader;
 	
 	function __construct()
 	{
 		$this->father = &$this;
+		$this->loader = new loader();
 		global $config;
 		$this->config = $config;
+		unset($config);
 	}
 
 	public static function instance()
@@ -20,6 +23,15 @@ class Father {
             self::$father = new Father();
         }
         return self::$father;
+    }
+    
+    public function run()
+    {
+    	if($config['theme_from_core'])
+    	{
+    		
+    	}
+    	$this->loader->run();
     }
 }
 ?>

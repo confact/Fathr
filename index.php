@@ -11,6 +11,5 @@ if($config['developmentmode'])
 require_once('system/core/boot.php');
 
 $fathr = Father::instance();
-$Father = new loader();
-$Father->run();
+$fathr->run();
 ?>
