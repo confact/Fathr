@@ -7,16 +7,15 @@ class loader {
 	public $controllerpath = "";
 	public $url = "";
 
-	public function __construct()
+	public function __construct($config = "")
 	{	
-		global $fathr;
-		$this->controllerpath = $fathr->config['applicationpath'] . '/controllers/';
-		$this->defaultcontroller = $fathr->config['default_controller'];
+		$this->controllerpath = $config['applicationpath'] . '/controllers/';
+		$this->defaultcontroller = $config['default_controller'];
 		if(!isset($_GET['page']))
 		{
 			$_GET['page'] = "";
 		}
-		$this->url = $this->seperatenames($_GET['page']);
+		$this->url = $this->urlslug($_GET['page']);
 	}
 
 	public function run()
@@ -84,7 +83,8 @@ class loader {
 			$this->controller->index();
 		}
 	}
-	private function seperatenames($url)
+	
+	private function urlslug($url)
 	{
 		$slug = explode('/',$url);
 		foreach ($slug as $key => $value) {

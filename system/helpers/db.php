@@ -9,7 +9,7 @@ class db {
 	function __construct()
 	{
 		$this->instance = &$this;
-		global $db_config;
+		require_once('config/db.php');
 		$this->config = $db_config;
 		unset($db_config);
 		$this->conn = mysql_connect($this->config['db_host'], $this->config['db_user'], $this->config['db_password'])
@@ -34,17 +34,19 @@ class db {
 	
 	function query($string)
 	{
-		return mysql_query($string, $this->conn);
+		$result = mysql_query($string, $this->conn);
+		return mysql_fetch_row($result);
 	}
 	
 	function get($tablename, $limit = null) {
 		if($limit)
 		{
-			return mysql_query("SELECT * FROM ".$tablename." LIMIT ".$limit, $this->conn);
+			$result = mysql_query("SELECT * FROM ".$tablename." LIMIT ".$limit, $this->conn);
 		}
 		else {
-			return mysql_query("SELECT * FROM ".$tablename, $this->conn);
+			$result = mysql_query("SELECT * FROM ".$tablename, $this->conn);
 		}
+		return $result;
 	}
 	
 	function close()

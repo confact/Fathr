@@ -11,10 +11,10 @@ class Father {
 	function __construct()
 	{
 		$this->father = &$this;
-		$this->loader = new loader();
 		global $config;
 		$this->config = $config;
 		unset($config);
+		$this->loader = new loader($this->config);
 	}
 
 	public static function instance()
@@ -27,7 +27,7 @@ class Father {
     
     public function run()
     {
-    	if($config['theme_from_core'])
+    	if($this->config['theme_from_core'])
     	{
     		
     	}
