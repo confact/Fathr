@@ -47,4 +47,13 @@ echo $this->main;
 </div>
 <?
 }
+else {
+?>
+<div class="span16">
+<?php
+echo $this->main;
+?>
+</div>
+<?
+}
 ?>
