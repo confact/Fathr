@@ -34,17 +34,17 @@ class db {
 	
 	function query($string)
 	{
-		$result = mysql_query("".$string."", $this->conn);
+		$result = mysql_query($string, $this->conn) or die('Could not connect: ' . mysql_error());
 		return $result;
 	}
 	
 	function get($tablename, $limit = null) {
 		if($limit)
 		{
-			$result = mysql_query("SELECT * FROM ".$tablename." LIMIT ".$limit, $this->conn);
+			$result = mysql_query("SELECT * FROM ".$tablename." LIMIT ".$limit, $this->conn) or die('Could not connect: ' . mysql_error());
 		}
 		else {
-			$result = mysql_query("SELECT * FROM ".$tablename, $this->conn);
+			$result = mysql_query("SELECT * FROM ".$tablename, $this->conn) or die('Could not connect: ' . mysql_error());
 		}
 		return $result;
 	}
