@@ -1,9 +1,9 @@
 
-			<div id="footer" class="span-24 last">
-				<hr />
+			
+			</div>
+			<div id="footer" class="span16">
 				Powered by Fathr.
 				</div>
-			</div>
 		</div>
 	</body>
 </html>
