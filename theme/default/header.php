@@ -11,12 +11,7 @@
 		}
 		?>
 		<!-- Framework CSS -->  
-    	<link rel="stylesheet" href="/<?=$this->sitepath?>/theme/core/blueprint/screen.css" type="text/css" media="screen, projection" />  
-    	<link rel="stylesheet" href="/<?=$this->sitepath?>/theme/core/blueprint/print.css" type="text/css" media="print" />  
-    	<!--[if IE]><link rel="stylesheet" href="/<?=$this->sitepath?>/theme/core/blueprint/ie.css" type="text/css" media="screen, projection" /><![endif]-->  
-  
-    	<!-- Import fancy-type plugin. -->  
-    	<link rel="stylesheet" href="/<?=$this->sitepath?>/theme/core/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection" />
+    	<link rel="stylesheet" type="text/css" href="/<?=$this->sitepath?>/theme/core/bootstrap/bootstrap.min.css">
     	<?php if($this->stylesheet) {
     	?><link rel="stylesheet" href="/<?=$this->sitepath?>/theme/<?=$this->theme?>/<?=$this->stylesheet?>.css" type="text/css" media="screen, projection" /><?
     	}
