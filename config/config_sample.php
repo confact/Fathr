@@ -6,7 +6,7 @@
 $config['developmentmode'] = true;
 
 // the path to the site. Example: www.example.com/fathr - then sitepath is fathr
-$config['sitepath'] = "fathr";
+$config['sitepath'] = "";
 
 // Applicationpath
 $config['applicationpath'] = "application";
