@@ -52,6 +52,14 @@ class Theme {
 	{
 		$this->menu = $menu;
 	}
+	function setMeta($meta)
+	{
+		$this->meta = $meta;
+	}
+	function AddMeta($name, $content)
+	{
+		$this->meta[$name] = $content;
+	}
 	function setStylesheet($styleurl)
 	{
 		$this->stylesheet = $styleurl;

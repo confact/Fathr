@@ -6,7 +6,7 @@
 		foreach($this->meta as $name => $text)
 		{
 		?>
-		
+		<meta name="<?php echo $name; ?>" content="<?php echo $text; ?>" />
 		<?
 		}
 		?>
