@@ -13,9 +13,11 @@ class Theme {
 	public $grid = 24; // count of grids we should use. default: 24.
 	public $sidebar = array(); // sidebar saves here, [$settings(left/right] = $content;
 	public $stylesheet = ""; // want to use custom stylesheet? set this to the name of the stylesheet. (it should be in the theme's directory.)
+	public $error = "";
 	
 	//variables containing the content for the different
 	public $main;
+	public $mainView;
 	public $menu = array();
 	public $footer;
 
@@ -25,7 +27,10 @@ class Theme {
 		global $fathr;
 		$this->sitepath = $fathr->config['sitepath'];
 	}
-	
+	function setError($error)
+	{
+		$this->error = $error;
+	}
 	function setMain($content)
 	{
 		$this->main = $content;
@@ -37,7 +42,7 @@ class Theme {
 		
 		$path = '/../../'.$fathr->config['applicationpath'] . '/views/' . $viewname . '.php';
 		if(file_exists(dirname(__FILE__) . $path)) {
-			$this->setMain(file_get_contents(dirname(__FILE__).$path));
+			$this->mainView = dirname(__FILE__).$path;
 		}
 		else {
 			$this->setMain(dirname(__FILE__) . $path . "<br />"."the view ".$viewname." couldn't be found");
@@ -67,7 +72,17 @@ class Theme {
 	{
 		$this->pageheadertitle = $title;
 	}
-	
+	function getMainContent()
+	{
+		if(isset($this->mainView))
+		{
+			include($this->mainView);
+		}
+		else
+		{
+			echo $this->main;
+		}
+	}
 	private function getHeader()
 	{
 		require_once('theme/'.$this->theme.'/header.php');
