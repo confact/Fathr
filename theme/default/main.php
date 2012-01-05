@@ -8,7 +8,7 @@ if(isset($this->sidebar["left"]) AND isset($this->sidebar["right"])) {
 </div>
 <div class="span8">
 <?php
-echo $this->main;
+$this->getMainContent();
 ?>
 </div>
 <div class="span3">
@@ -26,7 +26,7 @@ else if(isset($this->sidebar["left"]) AND !isset($this->sidebar["right"])) {
 </div>
 <div class="span10">
 <?php
-echo $this->main;
+$this->getMainContent();
 ?>
 </div>
 </div>
@@ -37,7 +37,7 @@ echo $this->main;
 <div class="row">
 <div class="span10">
 <?php
-echo $this->main;
+$this->getMainContent();
 ?>
 </div>
 <div class="span4">
@@ -50,7 +50,7 @@ echo $this->main;
 else {
 ?>
 <?php
-echo $this->main;
+$this->getMainContent();
 ?>
 <?
 }
