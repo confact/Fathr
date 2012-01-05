@@ -34,8 +34,8 @@ class db {
 	
 	function query($string)
 	{
-		$result = mysql_query($string, $this->conn);
-		return mysql_fetch_row($result);
+		$result = mysql_query("".$string."", $this->conn);
+		return $result;
 	}
 	
 	function get($tablename, $limit = null) {
