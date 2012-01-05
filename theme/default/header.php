@@ -19,9 +19,9 @@
 	</head>
 	<body>
 	<div class="container">
-		<div id="header" class="span-24 last">
+		<div id="header" class="span16">
 			<h1><?=$this->pageheadertitle?></h1>
-			<nav id="menu" class="span-24 last">
+			<nav id="menu" class="span16">
 			<?php
 			if(is_array($this->menu))
 			{

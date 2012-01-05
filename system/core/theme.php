@@ -11,6 +11,7 @@ class Theme {
 	public $pageheadercaption = ""; // the undertext in header. default: empty.
 	public $meta = array(); // array with the meta tags like description, keywords and so on: default: empty.
 	public $grid = 24; // count of grids we should use. default: 24.
+	public $sidebar = array(); // sidebar saves here, [$settings(left/right] = $content;
 	public $stylesheet = ""; // want to use custom stylesheet? set this to the name of the stylesheet. (it should be in the theme's directory.)
 	
 	//variables containing the content for the different
@@ -51,6 +52,10 @@ class Theme {
 	function setFooter($footer)
 	{
 		$this->footer = $footer;
+	}
+	function setSidebar($sidebar, $settings)
+	{
+		$this->sidebar[$settings] = $sidebar;
 	}
 	function setPageTitle($title)
 	{
