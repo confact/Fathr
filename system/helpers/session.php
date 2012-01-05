@@ -9,7 +9,9 @@ class Session {
 	
 	function getUser($key)
 	{
-		return $_SESSION['user_'.$key];
+		if(isset($_SESSION['user_'.$key])) {
+			return $_SESSION['user_'.$key];
+		}
 	}
 	
 	function setUser($key, $var)
