@@ -18,14 +18,16 @@
     	?>
 	</head>
 	<body>
-	<div class="container">
-		<div id="header" class="span16">
-			<h1><?=$this->pageheadertitle?></h1>
-			<nav id="menu" class="span16">
-			<?php
+	
+	<div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <a class="brand" href="/<?=$this->sitepath?>"><?=$this->pageheadertitle?></a>
+
+		<?php
 			if(is_array($this->menu))
 			{
-				?><ul><?
+				?>          <ul class="nav"><?
 				foreach($this->menu as $name => $href)
 				{
 				?>
@@ -35,6 +37,10 @@
 				?></ul><?
 				}
 				?>
-			</nav>
-        	<hr />
-		</div>
+        </div>
+      </div>
+
+    </div>
+    
+	<div class="container">
+	<div class="content">

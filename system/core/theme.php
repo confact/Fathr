@@ -34,11 +34,13 @@ class Theme {
 	function setMainView($viewname)
 	{
 		global $fathr;
-		if(file_exists($fathr->config['applicationpath'] . '/views/' . $viewname . '.php')) {
-			$this->setMain(file_get_contents($fathr->config['applicationpath'] . '/views/' . $viewname . '.php'));
+		
+		$path = '/../../'.$fathr->config['applicationpath'] . '/views/' . $viewname . '.php';
+		if(file_exists(dirname(__FILE__) . $path)) {
+			$this->setMain(file_get_contents(dirname(__FILE__).$path));
 		}
 		else {
-			$this->setMain("the view ".$viewname." couldn't be found");
+			$this->setMain(dirname(__FILE__) . $path . "<br />"."the view ".$viewname." couldn't be found");
 		}
 	}
 	function setMenu($menu)
