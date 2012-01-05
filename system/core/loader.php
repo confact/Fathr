@@ -47,28 +47,11 @@ class loader {
 		if(isset($this->url[1]) AND $this->url[1] != NULL)
 		{
 			$function = $this->url[1];
-			$parameters = count($this->url)-2;
+			$parameters = $this->split_urlToOnlyParameters($this->url);
 			if(method_exists($this->controller, $function))
 			{
-				$method = new ReflectionMethod(get_class($this->controller), $function);
-				$num = $method->getNumberOfParameters();
-				if($num > 0) {
-					
-					if($parameters == $num) {
-						if($parameters == 1) {
-							$this->controller->$function($this->url[2]);
-						}
-						else {
-							$this->controller->$function($this->url[2],$this->url[3]);
-						}
-					}
-					else
-					{
-						$this->show_error(406);
-					}
-				}
-				else if($num <= 0 AND $parameters > 0){
-					$this->show_error(402);
+				if(count($parameters) > 0) {
+					call_user_func_array(array($this->controller, $function), $parameters);
 				}
 				else {
 					$this->controller->$function();
@@ -99,5 +82,15 @@ class loader {
 	{
 		echo " ERROR " . $errorid . " - We had some problems. come back later.";
 	} 
+	
+	private function split_urlToOnlyParameters($array)
+	{
+		$parameters = array();
+		for($i = 2; $i<count($array);$i++)
+		{
+			$parameters[] = $array[$i];
+		}
+		return $parameters;
+	}
 }
 ?>
