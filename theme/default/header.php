@@ -24,16 +24,16 @@
 	<div class="topbar">
       <div class="fill">
         <div class="container">
-          <a class="brand" href="/<?=$this->sitepath?>"><?=$this->pageheadertitle?></a>
+          <a class="brand" href="/<?=$this->sitepath?>"><?=$this->pagetitle?></a>
 
 		<?php
-			if(is_array($this->menu))
+			if(isset($this->menu))
 			{
 				?>          <ul class="nav"><?
 				foreach($this->menu as $name => $href)
 				{
 				?>
-					<li><a href="<?=$href?>"><?=$name?></a></li>
+					<li><a href="<? echo $href?>"><? echo $name?></a></li>
 				<?
 				}
 				?></ul><?
@@ -46,3 +46,6 @@
     
 	<div class="container">
 	<div class="content">
+	<div class="page-header">
+          <h1><? echo $this->pageheadertitle; ?></h1>
+        </div>
