@@ -51,7 +51,7 @@ class loader {
 			if(method_exists($this->controller, $function))
 			{
 				if(count($parameters) > 0) {
-					call_user_func_array(array($this->controller, $function), $parameters);
+					$this->openFunction($function, $parameters);
 				}
 				else {
 					$this->openFunction($function);
@@ -66,11 +66,18 @@ class loader {
 			$this->openFunction("index");
 		}
 	}
-	private function openFunction($function)
+	private function openFunction($function, $parameters = null)
 	{
 		global $fathr;
-		$fathr->controller = $this->controller;
-		$fathr->controller->$function();
+		if($parameters == null) {
+			$fathr->controller = $this->controller;
+			$fathr->controller->$function();
+		}
+		else
+		{
+			$fathr->controller = $this->controller;
+			call_user_func_array(array($fathr->controller, $function), $parameters);
+		}
 	}
 	private function urlslug($url)
 	{
