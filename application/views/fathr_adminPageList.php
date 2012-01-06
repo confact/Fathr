@@ -9,3 +9,4 @@
 		}?>
     	
     </table>
+    <a class="btn primary" href="<?="/".$fathr->controller->config['sitepath']."/fathr_admin/pageAdd"?>">Add new Page</a>
