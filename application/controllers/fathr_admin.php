@@ -93,7 +93,7 @@ class Fathr_admin extends Fathr_cms {
 		$this->theme->setMainView("fathr_adminmenuList");
 		
 		$sidebar = '    <h2>Add menu item</h2>
-    	<form action="/'.$this->config['sitepath'].'/fathr_admin/menuAdd" method="post">
+    	<form action="/'.$this->config['sitepath'].'/fathr_admin/doMenuAdd" method="post">
 			<div class="clearfix">
               <div class="input-prepend">
                 <span class="add-on">name</span>
@@ -128,17 +128,57 @@ class Fathr_admin extends Fathr_cms {
 		}
 	}
 	
-	function menuAdd()
+	function pageAdd()
 	{
-		$name = $_POST['name'];
-		$url = $_POST['url'];
-		$this->db->query("INSERT INTO menu (names, url) VALUES ('{$name}', '{$url}');");
-		header("Location: /".$this->config['sitepath']."/fathr_admin/menuList");
+		$login = $this->session->getUser("admin");
+		if(!isset($login)) {
+			header("Location: /".$this->config['sitepath']."/fathr_admin/");
+		}
+		else {
+			$this->pagelist = $this->db->get("pages");
+			$this->theme->setMainView("fathr_adminPageAdd");
+			$this->theme->setHeaderTitle("Add a Page<small>Here do you add a page.</small>");
+			$this->theme->render();
+		}
 	}
-	function menuDelete($id)
+	function doPageAdd()
 	{
-		$this->db->query("DELETE FROM menu WHERE id={$id};");
-		header("Location: /".$this->config['sitepath']."/fathr_admin/menuList");
+		$login = $this->session->getUser("admin");
+		if(!isset($login)) {
+			header("Location: /".$this->config['sitepath']."/fathr_admin/");
+		}
+		else {
+			$title = $_POST['title'];
+			$headline = $_POST['headline'];
+			$text = $_POST['text'];
+			$this->db->query("INSERT INTO pages (title, headline, text) VALUES ('{$title}', '{$headline}', '{$text}');");
+			header("Location: /".$this->config['sitepath']."/fathr_admin/pageList");
+		}
+	}	
+
+	function doMenuAdd()
+	{
+		$login = $this->session->getUser("admin");
+		if(!isset($login)) {
+			header("Location: /".$this->config['sitepath']."/fathr_admin/");
+		}
+		else {
+			$name = $_POST['name'];
+			$url = $_POST['url'];
+			$this->db->query("INSERT INTO menu (names, url) VALUES ('{$name}', '{$url}');");
+			header("Location: /".$this->config['sitepath']."/fathr_admin/menuList");
+		}
+	}
+	function doMenuDelete($id)
+	{
+		$login = $this->session->getUser("admin");
+		if(!isset($login)) {
+			header("Location: /".$this->config['sitepath']."/fathr_admin/");
+		}
+		else {
+			$this->db->query("DELETE FROM menu WHERE id={$id};");
+			header("Location: /".$this->config['sitepath']."/fathr_admin/menuList");
+		}
 	}
 	function setSettings()
 	{
