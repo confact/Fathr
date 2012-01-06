@@ -7,6 +7,15 @@ class Fathr_admin extends Fathr_cms {
 		$this->load->helper("session");
 		$this->theme->setStylesheet("stylesheet");
 		$this->theme->setPageTitle($this->settings["sitename"]." - Admin");
+		$login = $this->session->getUser("admin");
+		if(isset($login))
+		{
+			$this->menu = array();
+			$this->menu['Menu'] = "/".$this->config['sitepath']."/fathr_admin/menuList";
+			$this->menu['Page'] = "/".$this->config['sitepath']."/fathr_admin/pageList";
+			$this->menu['Logout'] = "/".$this->config['sitepath']."/fathr_admin/doLogout";
+			$this->theme->setMenu($this->menu);
+		}
 	}
 	
 	function index()
@@ -68,11 +77,6 @@ class Fathr_admin extends Fathr_cms {
 		}
 		else {
 			$this->theme->setMainView("fathr_admininlogged");
-			$this->menu = array();
-			$this->menu['Menu'] = "/".$this->config['sitepath']."/fathr_admin/menuList";
-			$this->menu['Page'] = "/".$this->config['sitepath']."/fathr_admin/PageList";
-			$this->menu['Logout'] = "/".$this->config['sitepath']."/fathr_admin/doLogout";
-			$this->theme->setMenu($this->menu);
 			$this->theme->setHeaderTitle("Inlogged <small>Here can you set the normal settings.</small>");
 			$this->theme->render();
 		}
@@ -87,11 +91,7 @@ class Fathr_admin extends Fathr_cms {
 		else {
 		$this->menulist = $this->db->get("menu");
 		$this->theme->setMainView("fathr_adminmenuList");
-		$this->menu = array();
-		$this->menu['Menu'] = "/".$this->config['sitepath']."/fathr_admin/menuList";
-		$this->menu['Page'] = "/".$this->config['sitepath']."/fathr_admin/PageList";
-		$this->menu['Logout'] = "/".$this->config['sitepath']."/fathr_admin/doLogout";
-		$this->theme->setMenu($this->menu);
+		
 		$sidebar = '    <h2>Add menu item</h2>
     	<form action="/'.$this->config['sitepath'].'/fathr_admin/menuAdd" method="post">
 			<div class="clearfix">
@@ -111,6 +111,20 @@ class Fathr_admin extends Fathr_cms {
 		$this->theme->setSidebar($sidebar, "right");
 		$this->theme->setHeaderTitle("Menu <small>Here can you update, add and delete menu items.</small>");
 		$this->theme->render();
+		}
+	}
+	
+	function pageList()
+	{
+		$login = $this->session->getUser("admin");
+		if(!isset($login)) {
+			header("Location: /".$this->config['sitepath']."/fathr_admin/");
+		}
+		else {
+			$this->pagelist = $this->db->get("pages");
+			$this->theme->setMainView("fathr_adminPageList");
+			$this->theme->setHeaderTitle("Page <small>Here can you update, add and delete pages.</small>");
+			$this->theme->render();
 		}
 	}
 	
