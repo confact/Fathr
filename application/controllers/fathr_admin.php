@@ -154,6 +154,17 @@ class Fathr_admin extends Fathr_cms {
 			$this->db->query("INSERT INTO pages (title, headline, text) VALUES ('{$title}', '{$headline}', '{$text}');");
 			header("Location: /".$this->config['sitepath']."/fathr_admin/pageList");
 		}
+	}
+	function doPageDelete($id)
+	{
+		$login = $this->session->getUser("admin");
+		if(!isset($login)) {
+			header("Location: /".$this->config['sitepath']."/fathr_admin/");
+		}
+		else {
+			$this->db->query("DELETE FROM pages WHERE id={$id};");
+			header("Location: /".$this->config['sitepath']."/fathr_admin/pageList");
+		}
 	}	
 
 	function doMenuAdd()

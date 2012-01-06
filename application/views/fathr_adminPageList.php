@@ -5,7 +5,7 @@
     	<? 	
     	while($row = mysql_fetch_array($fathr->controller->pagelist))
 		{
-			?><tr><td><?=$row[1]?></td><td><?=$row[2]?></td><td><a href="<?="/".$fathr->controller->config['sitepath']."/fathr_admin/pageDelete/".$row[0]?>">Delete</a> - Edit</td></tr><?
+			?><tr><td><?=$row[1]?></td><td><?=$row[2]?></td><td><a href="<?="/".$fathr->controller->config['sitepath']."/fathr_admin/doPageDelete/".$row[0]?>">Delete</a> - Edit</td></tr><?
 		}?>
     	
     </table>
