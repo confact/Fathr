@@ -1,7 +1,4 @@
 
-        <? 
-    	global $fathr;
-    	?>
         <form action="/fathr/fathr_admin/doLogin/" method="post">
 			<div class="clearfix">
               <div class="input-prepend">

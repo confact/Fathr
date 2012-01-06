@@ -82,6 +82,7 @@ class Theme {
 	}
 	function getMainContent()
 	{
+		global $fathr;
 		if(isset($this->mainView))
 		{
 			include($this->mainView);
