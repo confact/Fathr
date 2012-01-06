@@ -54,7 +54,7 @@ class loader {
 					call_user_func_array(array($this->controller, $function), $parameters);
 				}
 				else {
-					$this->controller->$function();
+					$this->openFunction($function);
 				}
 			}
 			else 
@@ -63,10 +63,15 @@ class loader {
 			}
 		}
 		else {
-			$this->controller->index();
+			$this->openFunction("index");
 		}
 	}
-	
+	private function openFunction($function)
+	{
+		global $fathr;
+		$fathr->controller = $this->controller;
+		$fathr->controller->$function();
+	}
 	private function urlslug($url)
 	{
 		$slug = explode('/',$url);
