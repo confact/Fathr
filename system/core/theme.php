@@ -14,6 +14,7 @@ class Theme {
 	public $sidebar = array(); // sidebar saves here, [$settings(left/right] = $content;
 	public $stylesheet = ""; // want to use custom stylesheet? set this to the name of the stylesheet. (it should be in the theme's directory.)
 	public $error = "";
+	public $pagebrand = "";
 	
 	//variables containing the content for the different
 	public $main;
@@ -75,6 +76,14 @@ class Theme {
 	function setPageTitle($title)
 	{
 		$this->pagetitle = $title;
+	}
+	function setPageBrand($pagebrand)
+	{
+		$this->pagebrand = $pagebrand;
+	}
+	function setPageBrandUrl($url)
+	{
+		$this->pagebrandurl = $url;
 	}
 	function setHeaderTitle($title)
 	{

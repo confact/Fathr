@@ -24,7 +24,7 @@
 	<div class="topbar">
       <div class="fill">
         <div class="container">
-          <a class="brand" href="/<?=$this->sitepath?>"><?=$this->pagetitle?></a>
+          <a class="brand" href="/<?=$this->sitepath?>"><?=$this->pagebrand?></a>
 
 		<?php
 			if(isset($this->menu))
