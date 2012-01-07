@@ -47,13 +47,10 @@ class Fathr_admin extends Fathr_cms {
 		$password = sha1(md5(mysql_escape_string($_POST['password']))); 
 		$query = $this->db->query("SELECT id from admins WHERE username='{$username}' and password='{$password}' LIMIT 1");
 		$found = false;
-		while($row = mysql_fetch_array($query))
+		$row = mysql_fetch_array($query);
+		if($row['id'] != "")
 		{
-			print_r($row);
-			if($row['id'] != "")
-			{
-				$found = true;
-			}
+			$found = true;
 		}
 		if($found) {
 			$this->session->setUser("admin", "hellyeah!");
