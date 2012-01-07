@@ -12,6 +12,32 @@
 	</div>
 </div>
 <div class="clearfix">
+
+            <label id="optionsCheckboxes">Show it in index?</label>
+            <div class="input">
+              <ul class="inputs-list">
+                <li>
+                  <label>
+                    <input type="checkbox" name="indexed" id="indexed" value="true" />
+                  </label>
+                </li>
+              </ul>
+            </div>
+</div>
+<div class="clearfix">
+
+            <label id="optionsCheckboxes">Add date to page?</label>
+            <div class="input">
+              <ul class="inputs-list">
+                <li>
+                  <label>
+                    <input type="checkbox" name="dated" id="dated" value="true" />
+                  </label>
+                </li>
+              </ul>
+            </div>
+</div>
+<div class="clearfix">
 	<label for="textarea">Text</label>
 	<div class="input">
 		<textarea class="xxlarge" id="text" name="text" rows="3"></textarea>
@@ -20,5 +46,6 @@
 		</span>
 	</div>
 </div>
+
 <input class="btn success" type="submit" name="add" value="Add" />
 </form>

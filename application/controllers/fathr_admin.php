@@ -7,6 +7,8 @@ class Fathr_admin extends Fathr_cms {
 		$this->load->helper("session");
 		$this->theme->setStylesheet("stylesheet");
 		$this->theme->setPageTitle($this->settings["sitename"]." - Admin");
+		$this->theme->setPageBrand($this->settings["sitename"]." - Admin");
+		$this->theme->setPageBrandUrl("/".$this->config['sitepath']."/fathr_admin");
 		$login = $this->session->getUser("admin");
 		if(isset($login))
 		{
@@ -27,7 +29,7 @@ class Fathr_admin extends Fathr_cms {
 		else {
 			$this->theme->setMainView("fathr_adminlogin");
 			$this->menu = array();
-			$this->menu['Back'] = "http://flimio.com/fathr/fathr_frontcontroller";
+			$this->menu['Back'] = "/".$this->config['sitepath'];
 			if($this->session->getUser("error") == "user")
 			{
 				$this->theme->setError("username or password was wrong.");
@@ -151,7 +153,16 @@ class Fathr_admin extends Fathr_cms {
 			$title = $_POST['title'];
 			$headline = $_POST['headline'];
 			$text = $_POST['text'];
-			$this->db->query("INSERT INTO pages (title, headline, text) VALUES ('{$title}', '{$headline}', '{$text}');");
+			$indexed=0;
+			if($_POST['indexed'] == "true") { $indexed = 1;}
+			if($_POST['dated'] == "true")
+			{
+				$date = strtotime("now");
+				$this->db->query("INSERT INTO pages (title, headline, text, indexed, date) VALUES ('{$title}', '{$headline}', '{$text}', '{$indexed}', '{$date}');");
+			}
+			else {
+				$this->db->query("INSERT INTO pages (title, headline, text, indexed) VALUES ('{$title}', '{$headline}', '{$text}', '{$indexed}');");
+			}
 			header("Location: /".$this->config['sitepath']."/fathr_admin/pageList");
 		}
 	}

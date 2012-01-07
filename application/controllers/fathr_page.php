@@ -19,10 +19,15 @@ class Fathr_page extends Fathr_cms {
 	function page($id = 0) {
 		if($id != 0)
 		{
-			$query = $this->db->query("SELECT title, headline, text from pages WHERE id='{$id}' LIMIT 1");
+			$query = $this->db->query("SELECT title, headline, text, date from pages WHERE id='{$id}' LIMIT 1");
 			$this->pagequery = mysql_fetch_array($query);
 			$this->theme->setPageTitle($this->settings["sitename"]." - ".$this->pagequery['title']);
-			$this->theme->setHeaderTitle($this->pagequery['headline']);
+			$headline = $this->pagequery['headline'];
+			if($this->pagequery['date'])
+			{
+				$headline .= " <small>".date('l j F Y', $this->pagequery['date'])."</small>";
+			}
+			$this->theme->setHeaderTitle($headline);
 			$this->theme->setMainView("fathr_pageView");
 		}
 		else {
