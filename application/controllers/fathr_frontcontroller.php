@@ -9,6 +9,7 @@ class Fathr_frontcontroller extends Fathr_cms {
 		$this->theme->setHeaderTitle($this->settings["sitename"]);
 		$this->theme->setPageBrand($this->settings["sitename"]);
 		$this->theme->setPageBrandUrl("/".$this->config['sitepath']);
+		$this->theme->setMenu($this->menu);
 	}
 	
 	function index() {
@@ -17,9 +18,23 @@ class Fathr_frontcontroller extends Fathr_cms {
 			//print_r($query);
 		}
 		else {
-			$this->pagequery = $this->db->query("SELECT title, headline, text, date from pages WHERE indexed=true");
-			$this->theme->setMainView("fathr_indexPages");
-			$this->theme->setMenu($this->menu);
+			if($this->settings['blogyindex'])
+			{
+				$this->pagequery = $this->db->query("SELECT title, headline, text, date from pages WHERE indexed=true");
+				$this->theme->setMainView("fathr_indexPages");
+			}
+			else {
+				$this->pagequery = $this->db->query("SELECT title, headline, text, date from pages WHERE indexed=true LIMIT 1");
+				$this->page = mysql_fetch_array($this->pagequery);
+				$this->theme->setMainView("fathr_indexPages");
+				if($this->page['date'] != "")
+				{
+					$this->theme->setHeaderTitle($this->page['headline']. " <small>".date('l j F Y', $this->page['date'])."</small>");
+				}
+				else {
+					$this->theme->setHeaderTitle($this->page['headline']);
+				}
+			}
 			$this->theme->render();
 		}
 	}

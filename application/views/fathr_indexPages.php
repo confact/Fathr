@@ -8,6 +8,7 @@ if($this->error != "")
     </div>
 <?
 }
+if($fathr->controller->settings['blogyindex']) {
 while($row = mysql_fetch_array($fathr->controller->pagequery))
 {
 ?>
@@ -21,5 +22,9 @@ echo $row['text'];
 ?>
 <hr />
 <?
+}
+}
+else {
+	echo $fathr->controller->page['text'];
 }
 ?>
