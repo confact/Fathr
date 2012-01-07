@@ -17,9 +17,8 @@ class Fathr_frontcontroller extends Fathr_cms {
 			//print_r($query);
 		}
 		else {
-			$myVar = print_r($this->settings, true);
-			$myVar .= print_r($this->menu, true);
-			$this->theme->setMain($myVar);
+			$this->pagequery = $this->db->query("SELECT title, headline, text, date from pages WHERE indexed=true");
+			$this->theme->setMainView("fathr_indexPages");
 			$this->theme->setMenu($this->menu);
 			$this->theme->render();
 		}
