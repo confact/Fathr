@@ -201,7 +201,26 @@ class Fathr_admin extends Fathr_cms {
 	}
 	function setSettings()
 	{
-	
+		$login = $this->session->getUser("admin");
+		if(!isset($login)) {
+			header("Location: /".$this->config['sitepath']."/fathr_admin/");
+		}
+		else {
+			$sitename = $_POST['sitename'];
+			$url = $_POST['url'];
+			$theme = $_POST['theme'];
+			$blogy = 0;
+			print_r($_POST);
+			echo "<br />";
+			if(isset($_POST['blogy']) AND $_POST['blogy'] == "true") {
+				$blogy = 1;
+			}
+			$this->db->query("UPDATE settings SET settings.value='{$sitename}' WHERE settings.key='sitename'");
+			$this->db->query("UPDATE settings SET settings.value='{$url}' WHERE settings.key='url'");
+			$this->db->query("UPDATE settings SET settings.value='{$theme}' WHERE settings.key='theme'");
+			$this->db->query("UPDATE settings SET settings.value='{$blogy}' WHERE settings.key='blogyindex'");
+			header("Location: /".$this->config['sitepath']."/fathr_admin/dashboard");
+		}
 	}
 }
 ?>
