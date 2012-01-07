@@ -16,6 +16,8 @@ class Theme {
 	public $error = "";
 	public $pagebrand = "";
 	
+	public $editor = ""; //CKeditor holder. Can be used by themes and views.
+	
 	//variables containing the content for the different
 	public $main;
 	public $mainView;
@@ -24,6 +26,8 @@ class Theme {
 
 	function __construct($theme = "default")
 	{
+		include('theme/core/ckeditor/ckeditor_php5.php');
+		$this->editor = new CKEditor();
 		$this->theme = $theme;
 		global $fathr;
 		$this->sitepath = $fathr->config['sitepath'];

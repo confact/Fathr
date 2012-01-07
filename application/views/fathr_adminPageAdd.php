@@ -40,7 +40,12 @@
 <div class="clearfix">
 	<label for="textarea">Text</label>
 	<div class="input">
-		<textarea class="xxlarge" id="text" name="text" rows="3"></textarea>
+		<? 
+		$config['toolbar'] = array(
+		array( 'Source', '-', 'Bold', 'Italic', 'Underline', 'Strike' ),
+		array( 'Image', 'Link', 'Unlink', 'Anchor' )
+		);
+		$this->editor->editor("text", "", $config); ?>
 		<span class="help-block">
 			This can be in html or raw text.
 		</span>
