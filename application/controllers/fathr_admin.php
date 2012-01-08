@@ -88,7 +88,7 @@ class Fathr_admin extends Fathr_cms {
 			header("Location: /".$this->config['sitepath']."/fathr_admin/");
 		}
 		else {
-		$this->menulist = $this->db->get("menu");
+		$this->menulist = $this->db->get("{$this->config['table_tag']}menu");
 		$this->theme->setMainView("fathr_adminmenuList");
 		
 		$sidebar = '    <h2>Add menu item</h2>
@@ -148,7 +148,7 @@ class Fathr_admin extends Fathr_cms {
 			header("Location: /".$this->config['sitepath']."/fathr_admin/");
 		}
 		else {
-			$this->pagequery = $this->db->query("SELECT id,title, headline, text, dated, date, indexed, sidebar, sidebarside from {$this->config['table_tag']}pages WHERE pages.id='{$id}'");
+			$this->pagequery = $this->db->query("SELECT id,title, headline, text, dated, date, indexed, sidebar, sidebarside from {$this->config['table_tag']}pages WHERE {$this->config['table_tag']}pages.id='{$id}'");
 			$this->pagesquery = $this->db->query("SELECT id,title from {$this->config['table_tag']}pages WHERE {$this->config['table_tag']}pages.id!='{$id}'");
 			$this->page = mysql_fetch_array($this->pagequery);
 			$this->theme->setMainView("fathr_adminPageEdit");
