@@ -38,6 +38,28 @@
             </div>
 </div>
 <div class="clearfix">
+
+            <label id="optionsCheckboxes">show as sidebar for page</label>
+            <div class="input">
+              <ul class="inputs-list">
+                <li id="sidebarholder">
+                	<select id="sidebarid" name="sidebarid">
+			 			<option value="0" selected="selected">none</option>
+  						<option value="index">index</option>
+  						<?
+  						while($row = mysql_fetch_array($fathr->controller->pagesquery))
+						{
+  						?>
+  							<option value="<?=$row['id']?>"><?=$row['title']?></option>
+  						<?
+  						}
+  						?>
+			  		</select>
+                </li>
+              </ul>
+            </div>
+</div>
+<div class="clearfix">
 	<label for="textarea">Text</label>
 	<div class="input">
 		<? 
