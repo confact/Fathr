@@ -89,6 +89,7 @@ class Fathr_admin extends Fathr_cms {
 		}
 		else {
 		$this->menulist = $this->db->get("{$this->config['table_tag']}menu");
+		$this->menulistmodal = $this->db->get("{$this->config['table_tag']}menu");
 		$this->theme->setMainView("fathr_adminmenuList");
 		
 		$sidebar = '    <h2>Add menu item</h2>
@@ -229,6 +230,19 @@ class Fathr_admin extends Fathr_cms {
 			$url = $_POST['url'];
 			$this->db->query("INSERT INTO {$this->config['table_tag']}menu (names, url) VALUES ('{$name}', '{$url}');");
 			header("Location: /".$this->config['sitepath']."/fathr_admin/menuList");
+		}
+	}
+	function doMenuUpdate($id)
+	{
+		$login = $this->session->getUser("admin");
+		if(!isset($login)) {
+			header("Location: /".$this->config['sitepath']."/fathr_admin/");
+		}
+		else {
+			$name = $_POST['name'];
+			$url = $_POST['url'];
+			$this->db->query("UPDATE {$this->config['table_tag']}menu SET {$this->config['table_tag']}menu.names='{$name}', {$this->config['table_tag']}menu.url='{$url}' WHERE {$this->config['table_tag']}menu.id='{$id}'");
+			//header("Location: /".$this->config['sitepath']."/fathr_admin/menuList");
 		}
 	}
 	function doMenuDelete($id)
