@@ -8,7 +8,7 @@ class Fathr_admin extends Fathr_cms {
 		$this->theme->setStylesheet("stylesheet");
 		$this->theme->setPageTitle($this->settings["sitename"]." - Admin");
 		$this->theme->setPageBrand($this->settings["sitename"]." - Admin");
-		$this->theme->setPageBrandUrl("/".$this->config['sitepath']."fathr_admin");
+		$this->theme->setPageBrandUrl($this->settings["url"]."fathr_admin");
 		$login = $this->session->getUser("admin");
 		if(isset($login))
 		{

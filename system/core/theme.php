@@ -13,8 +13,11 @@ class Theme {
 	public $grid = 24; // count of grids we should use. default: 24.
 	public $sidebar = array(); // sidebar saves here, [$settings(left/right] = $content;
 	public $stylesheet = ""; // want to use custom stylesheet? set this to the name of the stylesheet. (it should be in the theme's directory.)
+	
 	public $error = "";
+	
 	public $pagebrand = "";
+	public $pagebrandurl = "";
 	
 	public $editor = ""; //CKeditor holder. Can be used by themes and views.
 	
