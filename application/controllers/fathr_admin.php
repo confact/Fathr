@@ -148,7 +148,7 @@ class Fathr_admin extends Fathr_cms {
 			header("Location: /".$this->config['sitepath']."/fathr_admin/");
 		}
 		else {
-			$this->pagequery = $this->db->query("SELECT id,title, headline, text, dated, date, indexed, sidebar from pages WHERE pages.id='{$id}'");
+			$this->pagequery = $this->db->query("SELECT id,title, headline, text, dated, date, indexed, sidebar, sidebarside from pages WHERE pages.id='{$id}'");
 			$this->pagesquery = $this->db->query("SELECT id,title from pages WHERE pages.id!='{$id}'");
 			$this->page = mysql_fetch_array($this->pagequery);
 			$this->theme->setMainView("fathr_adminPageEdit");
@@ -167,6 +167,7 @@ class Fathr_admin extends Fathr_cms {
 			$headline = $_POST['headline'];
 			$text = $_POST['text'];
 			$sidebarid = $_POST['sidebarid'];
+			$sidebarside = $_POST['sidebarside'];
 			$indexed=0;
 			$date = strtotime("now");
 			if($_POST['indexed'] == "true") { $indexed = 1;}
@@ -174,10 +175,10 @@ class Fathr_admin extends Fathr_cms {
 			if($_POST['dated'] == "true")
 			{
 				$dated = 1;
-				$this->db->query("INSERT INTO pages (title, headline, text, indexed, dated, date, sidebar) VALUES ('{$title}', '{$headline}', '{$text}', '{$indexed}', '{$dated}', '{$date}','{$sidebarid}');");
+				$this->db->query("INSERT INTO pages (title, headline, text, indexed, dated, date, sidebar, sidebarside) VALUES ('{$title}', '{$headline}', '{$text}', '{$indexed}', '{$dated}', '{$date}','{$sidebarid}', '{$sidebarside}');");
 			}
 			else {
-				$this->db->query("INSERT INTO pages (title, headline, text, indexed, date, sidebar) VALUES ('{$title}', '{$headline}', '{$text}', '{$indexed}','{$date}','{$sidebarid}');");
+				$this->db->query("INSERT INTO pages (title, headline, text, indexed, date, sidebar, sidebarside) VALUES ('{$title}', '{$headline}', '{$text}', '{$indexed}','{$date}','{$sidebarid}', '{$sidebarside}');");
 			}
 			header("Location: /".$this->config['sitepath']."/fathr_admin/pageList");
 		}
@@ -193,6 +194,7 @@ class Fathr_admin extends Fathr_cms {
 			$headline = $_POST['headline'];
 			$text = $_POST['text'];
 			$sidebarid = $_POST['sidebarid'];
+			$sidebarside = $_POST['sidebarside'];
 			$indexed=0;
 			if(isset($_POST['indexed']) AND $_POST['indexed'] == "true") { $indexed = 1;}
 			$dated = 0;
@@ -200,7 +202,7 @@ class Fathr_admin extends Fathr_cms {
 			{
 				$dated = 1;
 			}
-			$this->db->query("UPDATE pages SET pages.title='{$title}', pages.headline='{$headline}', pages.text='{$text}', pages.indexed='{$indexed}', pages.dated='{$dated}', pages.sidebar='{$sidebarid}' WHERE pages.id='{$id}'");
+			$this->db->query("UPDATE pages SET pages.title='{$title}', pages.headline='{$headline}', pages.text='{$text}', pages.indexed='{$indexed}', pages.dated='{$dated}', pages.sidebar='{$sidebarid}', pages.sidebarside='{$sidebarside}' WHERE pages.id='{$id}'");
 			header("Location: /".$this->config['sitepath']."/fathr_admin/pageList");
 		}
 	}

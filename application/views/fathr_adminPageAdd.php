@@ -56,6 +56,13 @@
   						?>
 			  		</select>
                 </li>
+                <li id="sidebarsideholder">
+                	<select id="sidebarside" name="sidebarside">
+			 			<option value="left" <? if($fathr->controller->page['sidebarside'] == 'left') {echo 'selected="selected"';} ?>>left</option>
+  						<option value="right" <? if($fathr->controller->page['sidebarside'] == 'right') {echo 'selected="selected"';} ?>>right</option>
+			  		</select>
+			  		<span>Choose which side the sidebar should be on.</span>
+                </li>
               </ul>
             </div>
 </div>
