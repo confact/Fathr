@@ -5,7 +5,7 @@
 //development mode
 $config['developmentmode'] = true;
 
-// the path to the site. Example: www.example.com/fathr - then sitepath is fathr
+// the path to the site. Example: www.example.com/fathr/ - then sitepath is fathr/
 $config['sitepath'] = "";
 
 // the "tag"/prefix for the tables in  fathr cms. "tag_"{settings} as example.

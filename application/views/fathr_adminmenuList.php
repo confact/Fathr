@@ -35,7 +35,7 @@
 			var dataString = 'name='+ name + '&url=' + url;
 			$.ajax({
 			type: "POST",
-			url: "<?='/'.$fathr->controller->config['sitepath'].'/fathr_admin/doMenuUpdate/'.$row[0]?>",
+			url: "<?='/'.$fathr->controller->config['sitepath'].'fathr_admin/doMenuUpdate/'.$row[0]?>",
 			data: dataString,
 			success: function(){
   				$('#modal-update<?=$row[0]?>').modal('hide');
@@ -55,7 +55,7 @@
     	<? 	
     	while($row = mysql_fetch_array($fathr->controller->menulist))
 		{
-			?><tr><td><?=$row[1]?></td><td><?=$row[2]?></td><td><a href="<?="/".$fathr->controller->config['sitepath']."/fathr_admin/doMenuDelete/".$row[0]?>">Delete</a> - <a href="#" data-controls-modal="modal-update<?=$row[0]?>" data-backdrop="true" data-keyboard="true">Update</a></td></tr><?
+			?><tr><td><?=$row[1]?></td><td><?=$row[2]?></td><td><a href="<?="/".$fathr->controller->config['sitepath']."fathr_admin/doMenuDelete/".$row[0]?>">Delete</a> - <a href="#" data-controls-modal="modal-update<?=$row[0]?>" data-backdrop="true" data-keyboard="true">Update</a></td></tr><?
 		}?>
     	
     </table>

@@ -1,5 +1,5 @@
 <p>This will setup your database with required data for the Fathr CMS</p>
-<form action="<? echo '/'.$fathr->controller->config['sitepath'].'/'; ?>fathr_setup/db_setup" method="post">
+<form action="<? echo '/'.$fathr->controller->config['sitepath']; ?>fathr_setup/db_setup" method="post">
 <fieldset>
 <legend>General settings</legend>
 <div class="clearfix">

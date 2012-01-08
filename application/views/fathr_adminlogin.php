@@ -9,7 +9,7 @@
     </div>
 <?
 }?>
-			<form action="<? echo '/'.$fathr->controller->config['sitepath'].'/'; ?>fathr_admin/doLogin/" method="post">
+			<form action="<? echo '/'.$fathr->controller->config['sitepath']; ?>fathr_admin/doLogin/" method="post">
 			<div class="clearfix">
               <div class="input-prepend">
                 <span class="add-on">username</span>

@@ -1,4 +1,4 @@
-<form action="<? echo '/'.$fathr->controller->config['sitepath'].'/fathr_admin/doPageUpdate/'.$fathr->controller->page['id']; ?>" method="post">
+<form action="<? echo '/'.$fathr->controller->config['sitepath'].'fathr_admin/doPageUpdate/'.$fathr->controller->page['id']; ?>" method="post">
 <div class="clearfix">
 	<label for="title">Page's Title</label>
 	<div class="input">

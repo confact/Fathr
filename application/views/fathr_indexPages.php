@@ -12,7 +12,7 @@ if($fathr->controller->settings['blogyindex']) {
 while($row = mysql_fetch_array($fathr->controller->pagequery))
 {
 ?>
-<h2><?=$row['headline']?> <? if($row['dated'])
+<h2><a href="<? echo '/'.$fathr->controller->config['sitepath'].'fathr_page/page/'.$row['id']; ?>"><?=$row['headline']?></a> <? if($row['dated'])
 {
 	echo "<small>".date('l j F Y', $row['date'])."</small>";
 }?>

@@ -1,5 +1,5 @@
 
-        <form action="<? echo '/'.$fathr->controller->config['sitepath'].'/'; ?>fathr_admin/setSettings" method="post">
+        <form action="<? echo '/'.$fathr->controller->config['sitepath']; ?>fathr_admin/setSettings" method="post">
 			<div class="clearfix">
               <div class="input-prepend">
                 <span class="add-on">Site name</span>

@@ -8,14 +8,14 @@ class Fathr_admin extends Fathr_cms {
 		$this->theme->setStylesheet("stylesheet");
 		$this->theme->setPageTitle($this->settings["sitename"]." - Admin");
 		$this->theme->setPageBrand($this->settings["sitename"]." - Admin");
-		$this->theme->setPageBrandUrl("/".$this->config['sitepath']."/fathr_admin");
+		$this->theme->setPageBrandUrl("/".$this->config['sitepath']."fathr_admin");
 		$login = $this->session->getUser("admin");
 		if(isset($login))
 		{
 			$this->menu = array();
-			$this->menu['Menu'] = "/".$this->config['sitepath']."/fathr_admin/menuList";
-			$this->menu['Page'] = "/".$this->config['sitepath']."/fathr_admin/pageList";
-			$this->menu['Logout'] = "/".$this->config['sitepath']."/fathr_admin/doLogout";
+			$this->menu['Menu'] = "/".$this->config['sitepath']."fathr_admin/menuList";
+			$this->menu['Page'] = "/".$this->config['sitepath']."fathr_admin/pageList";
+			$this->menu['Logout'] = "/".$this->config['sitepath']."fathr_admin/doLogout";
 			$this->theme->setMenu($this->menu);
 		}
 	}
@@ -24,7 +24,7 @@ class Fathr_admin extends Fathr_cms {
 	{
 		$login = $this->session->getUser("admin");
 		if(isset($login)) {
-			header("Location: /".$this->config['sitepath']."/fathr_admin/dashboard/");
+			header("Location: /".$this->config['sitepath']."fathr_admin/dashboard/");
 		}
 		else {
 			$this->theme->setMainView("fathr_adminlogin");
@@ -54,25 +54,25 @@ class Fathr_admin extends Fathr_cms {
 		}
 		if($found) {
 			$this->session->setUser("admin", "hellyeah!");
-			header("Location: /".$this->config['sitepath']."/fathr_admin/dashboard/");
+			header("Location: /".$this->config['sitepath']."fathr_admin/dashboard/");
 		}
 		else {
 			$this->session->setUser("error", "user");
-			header("Location: /".$this->config['sitepath']."/fathr_admin/");
+			header("Location: /".$this->config['sitepath']."fathr_admin/");
 		}
 	}
 	
 	function doLogout()
 	{
 		$this->session->deleteUser("admin");
-		header("Location: /".$this->config['sitepath']."/fathr_admin/");
+		header("Location: /".$this->config['sitepath']."fathr_admin/");
 	}
 	
 	function dashboard()
 	{
 		$login = $this->session->getUser("admin");
 		if(!isset($login)) {
-			header("Location: /".$this->config['sitepath']."/fathr_admin/");
+			header("Location: /".$this->config['sitepath']."fathr_admin/");
 		}
 		else {
 			$this->theme->setMainView("fathr_admininlogged");
@@ -85,7 +85,7 @@ class Fathr_admin extends Fathr_cms {
 	{
 		$login = $this->session->getUser("admin");
 		if(!isset($login)) {
-			header("Location: /".$this->config['sitepath']."/fathr_admin/");
+			header("Location: /".$this->config['sitepath']."fathr_admin/");
 		}
 		else {
 		$this->menulist = $this->db->get("{$this->config['table_tag']}menu");
@@ -93,7 +93,7 @@ class Fathr_admin extends Fathr_cms {
 		$this->theme->setMainView("fathr_adminmenuList");
 		
 		$sidebar = '    <h2>Add menu item</h2>
-    	<form action="/'.$this->config['sitepath'].'/fathr_admin/doMenuAdd" method="post">
+    	<form action="/'.$this->config['sitepath'].'fathr_admin/doMenuAdd" method="post">
 			<div class="clearfix">
               <div class="input-prepend">
                 <span class="add-on">name</span>
@@ -118,7 +118,7 @@ class Fathr_admin extends Fathr_cms {
 	{
 		$login = $this->session->getUser("admin");
 		if(!isset($login)) {
-			header("Location: /".$this->config['sitepath']."/fathr_admin/");
+			header("Location: /".$this->config['sitepath']."fathr_admin/");
 		}
 		else {
 			$this->pagelist = $this->db->get("{$this->config['table_tag']}pages");
@@ -132,7 +132,7 @@ class Fathr_admin extends Fathr_cms {
 	{
 		$login = $this->session->getUser("admin");
 		if(!isset($login)) {
-			header("Location: /".$this->config['sitepath']."/fathr_admin/");
+			header("Location: /".$this->config['sitepath']."fathr_admin/");
 		}
 		else {
 			$this->pagelist = $this->db->get("{$this->config['table_tag']}pages");
@@ -146,7 +146,7 @@ class Fathr_admin extends Fathr_cms {
 	{
 		$login = $this->session->getUser("admin");
 		if(!isset($login)) {
-			header("Location: /".$this->config['sitepath']."/fathr_admin/");
+			header("Location: /".$this->config['sitepath']."fathr_admin/");
 		}
 		else {
 			$this->pagequery = $this->db->query("SELECT id,title, headline, text, dated, date, indexed, sidebar, sidebarside from {$this->config['table_tag']}pages WHERE {$this->config['table_tag']}pages.id='{$id}'");
@@ -161,7 +161,7 @@ class Fathr_admin extends Fathr_cms {
 	{
 		$login = $this->session->getUser("admin");
 		if(!isset($login)) {
-			header("Location: /".$this->config['sitepath']."/fathr_admin/");
+			header("Location: /".$this->config['sitepath']."fathr_admin/");
 		}
 		else {
 			$title = $_POST['title'];
@@ -181,14 +181,14 @@ class Fathr_admin extends Fathr_cms {
 			else {
 				$this->db->query("INSERT INTO {$this->config['table_tag']}pages (title, headline, text, indexed, date, sidebar, sidebarside) VALUES ('{$title}', '{$headline}', '{$text}', '{$indexed}','{$date}','{$sidebarid}', '{$sidebarside}');");
 			}
-			header("Location: /".$this->config['sitepath']."/fathr_admin/pageList");
+			header("Location: /".$this->config['sitepath']."fathr_admin/pageList");
 		}
 	}
 	function doPageUpdate($id)
 	{
 		$login = $this->session->getUser("admin");
 		if(!isset($login)) {
-			header("Location: /".$this->config['sitepath']."/fathr_admin/");
+			header("Location: /".$this->config['sitepath']."fathr_admin/");
 		}
 		else {
 			$title = $_POST['title'];
@@ -204,18 +204,18 @@ class Fathr_admin extends Fathr_cms {
 				$dated = 1;
 			}
 			$this->db->query("UPDATE {$this->config['table_tag']}pages SET {$this->config['table_tag']}pages.title='{$title}', {$this->config['table_tag']}pages.headline='{$headline}', {$this->config['table_tag']}pages.text='{$text}', {$this->config['table_tag']}pages.indexed='{$indexed}', {$this->config['table_tag']}pages.dated='{$dated}', {$this->config['table_tag']}pages.sidebar='{$sidebarid}', {$this->config['table_tag']}pages.sidebarside='{$sidebarside}' WHERE {$this->config['table_tag']}pages.id='{$id}'");
-			header("Location: /".$this->config['sitepath']."/fathr_admin/pageList");
+			header("Location: /".$this->config['sitepath']."fathr_admin/pageList");
 		}
 	}
 	function doPageDelete($id)
 	{
 		$login = $this->session->getUser("admin");
 		if(!isset($login)) {
-			header("Location: /".$this->config['sitepath']."/fathr_admin/");
+			header("Location: /".$this->config['sitepath']."fathr_admin/");
 		}
 		else {
 			$this->db->query("DELETE FROM {$this->config['table_tag']}pages WHERE id={$id};");
-			header("Location: /".$this->config['sitepath']."/fathr_admin/pageList");
+			header("Location: /".$this->config['sitepath']."fathr_admin/pageList");
 		}
 	}	
 
@@ -223,20 +223,20 @@ class Fathr_admin extends Fathr_cms {
 	{
 		$login = $this->session->getUser("admin");
 		if(!isset($login)) {
-			header("Location: /".$this->config['sitepath']."/fathr_admin/");
+			header("Location: /".$this->config['sitepath']."fathr_admin/");
 		}
 		else {
 			$name = $_POST['name'];
 			$url = $_POST['url'];
 			$this->db->query("INSERT INTO {$this->config['table_tag']}menu (names, url) VALUES ('{$name}', '{$url}');");
-			header("Location: /".$this->config['sitepath']."/fathr_admin/menuList");
+			header("Location: /".$this->config['sitepath']."fathr_admin/menuList");
 		}
 	}
 	function doMenuUpdate($id)
 	{
 		$login = $this->session->getUser("admin");
 		if(!isset($login)) {
-			header("Location: /".$this->config['sitepath']."/fathr_admin/");
+			header("Location: /".$this->config['sitepath']."fathr_admin/");
 		}
 		else {
 			$name = $_POST['name'];
@@ -249,18 +249,18 @@ class Fathr_admin extends Fathr_cms {
 	{
 		$login = $this->session->getUser("admin");
 		if(!isset($login)) {
-			header("Location: /".$this->config['sitepath']."/fathr_admin/");
+			header("Location: /".$this->config['sitepath']."fathr_admin/");
 		}
 		else {
 			$this->db->query("DELETE FROM {$this->config['table_tag']}menu WHERE id={$id};");
-			header("Location: /".$this->config['sitepath']."/fathr_admin/menuList");
+			header("Location: /".$this->config['sitepath']."fathr_admin/menuList");
 		}
 	}
 	function setSettings()
 	{
 		$login = $this->session->getUser("admin");
 		if(!isset($login)) {
-			header("Location: /".$this->config['sitepath']."/fathr_admin/");
+			header("Location: /".$this->config['sitepath']."fathr_admin/");
 		}
 		else {
 			$sitename = $_POST['sitename'];
@@ -276,7 +276,7 @@ class Fathr_admin extends Fathr_cms {
 			$this->db->query("UPDATE {$this->config['table_tag']}settings SET {$this->config['table_tag']}settings.value='{$url}' WHERE {$this->config['table_tag']}settings.key='url'");
 			$this->db->query("UPDATE {$this->config['table_tag']}settings SET {$this->config['table_tag']}settings.value='{$theme}' WHERE {$this->config['table_tag']}settings.key='theme'");
 			$this->db->query("UPDATE {$this->config['table_tag']}settings SET {$this->config['table_tag']}settings.value='{$blogy}' WHERE {$this->config['table_tag']}settings.key='blogyindex'");
-			header("Location: /".$this->config['sitepath']."/fathr_admin/dashboard");
+			header("Location: /".$this->config['sitepath']."fathr_admin/dashboard");
 		}
 	}
 }

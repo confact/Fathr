@@ -14,13 +14,13 @@ class Fathr_frontcontroller extends Fathr_cms {
 	
 	function index() {
 		if(empty($this->settings)) {
-			header("Location: /".$this->config['sitepath']."/fathr_setup");
+			header("Location: /".$this->config['sitepath']."fathr_setup");
 			//print_r($query);
 		}
 		else {
 			if($this->settings['blogyindex'])
 			{
-				$this->pagequery = $this->db->query("SELECT title, headline, text, dated, date from {$this->config['table_tag']}pages WHERE indexed=true and sidebar='0'");
+				$this->pagequery = $this->db->query("SELECT title, headline, text, dated, date, id from {$this->config['table_tag']}pages WHERE indexed=true and sidebar='0'");
 				$this->theme->setMainView("fathr_indexPages");
 				$sidebarquery = $this->db->query("SELECT title, headline, text, dated, date, sidebarside from {$this->config['table_tag']}pages WHERE sidebar='index' LIMIT 1");
 				$this->sidebar = mysql_fetch_array($sidebarquery);

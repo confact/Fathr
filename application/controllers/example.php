@@ -8,12 +8,12 @@ class Example extends Controller {
 
 	function index() {
 		echo "it Works!";
-		echo "<br /><a href='/".$this->config['sitepath']."/example/newpage'>a new function</a>";
-		echo "<br /><a href='/".$this->config['sitepath']."/example/testconfig'>see how configs works</a>";
-		echo "<br /><a href='/".$this->config['sitepath']."/example/testmodel'>how model works</a>";
-		echo "<br /><a href='/".$this->config['sitepath']."/example/testview'>custom views</a>";
-		echo "<br /><a href='/".$this->config['sitepath']."/example/testhelper'>how a core helper works (session)</a>";
-		echo "<br /><a href='/".$this->config['sitepath']."/example/testtheme'>see how the horrible theme engine works</a>";
+		echo "<br /><a href='/".$this->config['sitepath']."example/newpage'>a new function</a>";
+		echo "<br /><a href='/".$this->config['sitepath']."example/testconfig'>see how configs works</a>";
+		echo "<br /><a href='/".$this->config['sitepath']."example/testmodel'>how model works</a>";
+		echo "<br /><a href='/".$this->config['sitepath']."example/testview'>custom views</a>";
+		echo "<br /><a href='/".$this->config['sitepath']."example/testhelper'>how a core helper works (session)</a>";
+		echo "<br /><a href='/".$this->config['sitepath']."example/testtheme'>see how the horrible theme engine works</a>";
 		echo "<p>You can see the example code on <a href='https://github.com/confact/Fathr'>github</a>.</p>";
 	}
 	
