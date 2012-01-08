@@ -24,7 +24,7 @@ else if(isset($this->sidebar["left"]) AND !isset($this->sidebar["right"])) {
 <? echo $this->sidebar["left"];
 ?>
 </div>
-<div class="span10">
+<div class="span9">
 <?php
 $this->getMainContent();
 ?>
@@ -35,7 +35,7 @@ $this->getMainContent();
  else if(isset($this->sidebar["right"]) AND !isset($this->sidebar["left"])) {
 ?>
 <div class="row">
-<div class="span10">
+<div class="span9">
 <?php
 $this->getMainContent();
 ?>
