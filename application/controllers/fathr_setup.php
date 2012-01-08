@@ -36,7 +36,7 @@ class Fathr_setup extends Controller {
   `username` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;");
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;") or die(mysql_error());
 		$this->db->query("INSERT INTO `admins` (`id`, `username`, `password`) VALUES
 (1, '{$username}', '{$password}');");
 
@@ -75,11 +75,14 @@ class Fathr_setup extends Controller {
   `sidebar` varchar(250) NOT NULL DEFAULT '0',
   `sidebarside` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;");
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;") or die(mysql_error());
 
 		$this->db->query("INSERT INTO `pages` (`id`, `title`, `headline`, `text`, `indexed`, `dated`, `date`, `sidebar`, `sidebarside`) VALUES
 (1, 'testar', 'Welcome', '<p>\r\n	Welcome to the Fathr! edit this in the admin.</p>\r\n', 1, 1, '1326020782', '0', ''),
 (2, 'sidebar', 'sidebar', '<p>\r\n	sidebar for a page maybe?</p>\r\n', 0, 1, '1326021310', '1', 'right');");
+
+		//after the setup will we send the user to the actual site
+		header("Location: /".$this->config['sitepath']);
 	}
 }
 ?>
