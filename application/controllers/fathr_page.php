@@ -21,6 +21,9 @@ class Fathr_page extends Fathr_cms {
 		{
 			$query = $this->db->query("SELECT title, headline, text, dated, date from pages WHERE id='{$id}' LIMIT 1");
 			$this->pagequery = mysql_fetch_array($query);
+			$sidebarquery = $this->db->query("SELECT title, headline, text, dated, date from pages WHERE sidebar='{$id}' LIMIT 1");
+			$this->sidebar = mysql_fetch_array($sidebarquery);
+			$this->theme->setSidebar($this->sidebar['text'], "right");
 			$this->theme->setPageTitle($this->settings["sitename"]." - ".$this->pagequery['title']);
 			$headline = $this->pagequery['headline'];
 			if($this->pagequery['dated'])
