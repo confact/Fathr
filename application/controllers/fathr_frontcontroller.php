@@ -20,14 +20,14 @@ class Fathr_frontcontroller extends Fathr_cms {
 		else {
 			if($this->settings['blogyindex'])
 			{
-				$this->pagequery = $this->db->query("SELECT title, headline, text, dated, date, id from {$this->config['table_tag']}pages WHERE indexed=true and sidebar='0'");
+				$this->pagequery = $this->db->query("SELECT title, headline, text, dated, date, id from {$this->config['table_tag']}pages WHERE indexed=true");
 				$this->theme->setMainView("fathr_indexPages");
 				$sidebarquery = $this->db->query("SELECT title, headline, text, dated, date, sidebarside from {$this->config['table_tag']}pages WHERE sidebar='index' LIMIT 1");
 				$this->sidebar = mysql_fetch_array($sidebarquery);
 				$this->theme->setSidebar($this->sidebar['text'], $this->sidebar['sidebarside']);
 			}
 			else {
-				$this->pagequery = $this->db->query("SELECT title, headline, text, dated, date from {$this->config['table_tag']}pages WHERE indexed=true AND sidebar='0' LIMIT 1");
+				$this->pagequery = $this->db->query("SELECT title, headline, text, dated, date from {$this->config['table_tag']}pages WHERE indexed=true LIMIT 1");
 				$this->page = mysql_fetch_array($this->pagequery);
 				$this->theme->setMainView("fathr_indexPages");
 				$sidebarquery = $this->db->query("SELECT title, headline, text, dated, date, sidebarside from {$this->config['table_tag']}pages WHERE sidebar='index' LIMIT 1");
