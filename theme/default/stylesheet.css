@@ -39,7 +39,15 @@
       .content .span4 {
         margin-left: 0;
         padding-left: 19px;
-        border-left: 1px solid #eee;
+      }
+      
+      .left {
+      		padding-right: 19px;
+      		border-right: 1px solid #eee;
+      }
+      .right {
+      		padding-left: 19px;
+      		border-left: 1px solid #eee;
       }
 
       .topbar .btn {
