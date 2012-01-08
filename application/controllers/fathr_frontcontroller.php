@@ -27,7 +27,7 @@ class Fathr_frontcontroller extends Fathr_cms {
 				$this->pagequery = $this->db->query("SELECT title, headline, text, dated, date from pages WHERE indexed=true LIMIT 1");
 				$this->page = mysql_fetch_array($this->pagequery);
 				$this->theme->setMainView("fathr_indexPages");
-				if($this->page['date'] != "")
+				if($this->page['dated'])
 				{
 					$this->theme->setHeaderTitle($this->page['headline']. " <small>".date('l j F Y', $this->page['date'])."</small>");
 				}
