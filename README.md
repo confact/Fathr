@@ -14,5 +14,13 @@ it is very inspired of CodeIgniter that i really digg. This framework has a alre
 4. Go to your Fathr url in your browser. it will automatically redirect you to the setup if you haven't already setup the database with tables and data manually.
 4. Fathring on. You are finish.
 
+
+### License
+
+Bootstrap
+---------
+Copyright 2011 Twitter, Inc.
+Apache License, Version 2.0: http://www.apache.org/licenses/LICENSE-2.0
+
 -----------------------
 dun/confact
