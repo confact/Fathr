@@ -14,6 +14,7 @@
     	<link rel="stylesheet" type="text/css" href="/<?=$this->sitepath?>/theme/core/bootstrap/bootstrap.min.css">
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 		<script src="/<?=$this->sitepath?>/theme/core/bootstrap/js/bootstrap-alerts.js"></script>
+		<script src="/<?=$this->sitepath?>/theme/core/bootstrap/js/bootstrap-modal.js"></script>
     	<?php if($this->stylesheet) {
     	?><link rel="stylesheet" href="/<?=$this->sitepath?>/theme/<?=$this->theme?>/<?=$this->stylesheet?>.css" type="text/css" media="screen, projection" /><?
     	}
