@@ -4,11 +4,6 @@ class Fathr_setup extends Controller {
 		parent::__construct();
 		$this->load->theme();
 		$this->load->helper("db");
-		
-		$query = $this->db->query("SELECT * menu");
-		if($query != null) {
-			
-		}
 	}
 	public function index() {
 		$query = $this->db->get("settings");
