@@ -136,7 +136,21 @@ class Fathr_admin extends Fathr_cms {
 		else {
 			$this->pagelist = $this->db->get("pages");
 			$this->theme->setMainView("fathr_adminPageAdd");
-			$this->theme->setHeaderTitle("Add a Page<small>Here do you add a page.</small>");
+			$this->theme->setHeaderTitle("Add a Page <small>Here do you add a page.</small>");
+			$this->theme->render();
+		}
+	}
+	function pageEdit($id)
+	{
+		$login = $this->session->getUser("admin");
+		if(!isset($login)) {
+			header("Location: /".$this->config['sitepath']."/fathr_admin/");
+		}
+		else {
+			$this->pagequery = $this->db->query("SELECT id,title, headline, text, dated, date, indexed from pages WHERE pages.id='{$id}'");
+			$this->page = mysql_fetch_array($this->pagequery);
+			$this->theme->setMainView("fathr_adminPageEdit");
+			$this->theme->setHeaderTitle("Edit a Page <small>Here will you edit a page</small>");
 			$this->theme->render();
 		}
 	}
@@ -151,15 +165,38 @@ class Fathr_admin extends Fathr_cms {
 			$headline = $_POST['headline'];
 			$text = $_POST['text'];
 			$indexed=0;
+			$date = strtotime("now");
 			if($_POST['indexed'] == "true") { $indexed = 1;}
+			$dated = 0;
 			if($_POST['dated'] == "true")
 			{
-				$date = strtotime("now");
-				$this->db->query("INSERT INTO pages (title, headline, text, indexed, date) VALUES ('{$title}', '{$headline}', '{$text}', '{$indexed}', '{$date}');");
+				$dated = 1;
+				$this->db->query("INSERT INTO pages (title, headline, text, indexed, dated, date) VALUES ('{$title}', '{$headline}', '{$text}', '{$indexed}', '{$dated}', '{$date}');");
 			}
 			else {
-				$this->db->query("INSERT INTO pages (title, headline, text, indexed) VALUES ('{$title}', '{$headline}', '{$text}', '{$indexed}');");
+				$this->db->query("INSERT INTO pages (title, headline, text, indexed, date) VALUES ('{$title}', '{$headline}', '{$text}', '{$indexed}','{$date}');");
 			}
+			header("Location: /".$this->config['sitepath']."/fathr_admin/pageList");
+		}
+	}
+	function doPageUpdate($id)
+	{
+		$login = $this->session->getUser("admin");
+		if(!isset($login)) {
+			header("Location: /".$this->config['sitepath']."/fathr_admin/");
+		}
+		else {
+			$title = $_POST['title'];
+			$headline = $_POST['headline'];
+			$text = $_POST['text'];
+			$indexed=0;
+			if(isset($_POST['indexed']) AND $_POST['indexed'] == "true") { $indexed = 1;}
+			$dated = 0;
+			if(isset($_POST['dated']) AND $_POST['dated'] == "true")
+			{
+				$dated = 1;
+			}
+			$this->db->query("UPDATE pages SET pages.title='{$title}', pages.headline='{$headline}', pages.text='{$text}', pages.indexed='{$indexed}', pages.dated='{$dated}' WHERE pages.id='{$id}'");
 			header("Location: /".$this->config['sitepath']."/fathr_admin/pageList");
 		}
 	}
