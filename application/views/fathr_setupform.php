@@ -38,7 +38,7 @@
 <div class="clearfix">
 	<label for="title">password</label>
 	<div class="input">
-		<input class="xlarge" id="username" name="username" size="30" type="text" />
+		<input class="xlarge" id="password" name="password" size="30" type="text" />
 	</div>
 </div>
 </fieldset>
