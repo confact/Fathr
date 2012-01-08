@@ -20,11 +20,11 @@ class Fathr_frontcontroller extends Fathr_cms {
 		else {
 			if($this->settings['blogyindex'])
 			{
-				$this->pagequery = $this->db->query("SELECT title, headline, text, date from pages WHERE indexed=true");
+				$this->pagequery = $this->db->query("SELECT title, headline, text, dated, date from pages WHERE indexed=true");
 				$this->theme->setMainView("fathr_indexPages");
 			}
 			else {
-				$this->pagequery = $this->db->query("SELECT title, headline, text, date from pages WHERE indexed=true LIMIT 1");
+				$this->pagequery = $this->db->query("SELECT title, headline, text, dated, date from pages WHERE indexed=true LIMIT 1");
 				$this->page = mysql_fetch_array($this->pagequery);
 				$this->theme->setMainView("fathr_indexPages");
 				if($this->page['date'] != "")

@@ -26,7 +26,7 @@
 </div>
 <div class="clearfix">
 
-            <label id="optionsCheckboxes">Add date to page?</label>
+            <label id="optionsCheckboxes">show posted date?</label>
             <div class="input">
               <ul class="inputs-list">
                 <li>
