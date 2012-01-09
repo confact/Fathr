@@ -35,7 +35,7 @@ class Theme {
 		$this->theme = $theme;
 		global $fathr;
 		$this->sitepath = $fathr->config['sitepath'];
-		$siteurl = "http://".$_SERVER["SERVER_NAME"]."/".$config['sitepath']."/theme/core/ckeditor/";
+		$siteurl = "http://".$_SERVER["SERVER_NAME"]."/".$fathr->config['sitepath']."/theme/core/ckeditor/";
 		$this->editor = new CKEditor($siteurl);
 	}
 	function setError($error)
