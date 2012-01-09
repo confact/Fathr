@@ -5,10 +5,13 @@ class Fathr_frontcontroller extends Fathr_cms {
 	function __construct() {
 		parent::__construct();
 		$this->theme->setStylesheet("stylesheet");
-		$this->theme->setPageTitle($this->settings["sitename"]);
-		$this->theme->setHeaderTitle($this->settings["sitename"]);
-		$this->theme->setPageBrand($this->settings["sitename"]);
-		$this->theme->setPageBrandUrl("/".$this->config['sitepath']);
+		if(isset($this->settings["sitename"]))
+		{
+			$this->theme->setPageTitle($this->settings["sitename"]);
+			$this->theme->setHeaderTitle($this->settings["sitename"]);
+			$this->theme->setPageBrand($this->settings["sitename"]);
+			$this->theme->setPageBrandUrl("/".$this->config['sitepath']);
+		}
 		$this->theme->setMenu($this->menu);
 		$this->theme->setColorboxOn();
 	}
