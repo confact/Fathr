@@ -9,20 +9,20 @@ class Fathr_cms extends Controller {
 		$this->load->helper("db");
 		
 		$menuquery = $this->db->get("{$this->config['table_tag']}menu");
-		if ($menuquery) {
+		if (isset($menuquery)) {
 			while($row = mysql_fetch_array($menuquery))
 			{
 				$this->menu[$row[1]] = $row[2];
 			}
 		}
 		$settingsquery = $this->db->get("{$this->config['table_tag']}settings");
-		if ($settingsquery) {
+		if (isset($settingsquery)) {
 			while($row = mysql_fetch_array($settingsquery))
 			{
 				$this->settings[$row[1]] = $row[2];
 			}
 		}
-		if($this->settings["theme"])
+		if(isset($this->settings["theme"]))
 		{
 			$this->load->theme($this->settings["theme"]);
 		}
