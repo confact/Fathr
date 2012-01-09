@@ -16,6 +16,8 @@ class Theme {
 	
 	public $error = "";
 	
+	public $colorbox = false;
+	
 	public $pagebrand = "";
 	public $pagebrandurl = "";
 	
@@ -43,6 +45,13 @@ class Theme {
 	{
 		$this->main = $content;
 	}
+	
+	//set the color box to true, making the theme to add color box and set the class(.colorbox) so you just need to make the <a> in right class.
+	function setColorboxOn()
+	{
+		$this->colorbox = true;
+	}
+	
 	//want to add the content of the view into the theme? use this then.
 	function setMainView($viewname)
 	{
