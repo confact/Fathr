@@ -24,6 +24,9 @@
     	<script>
 			$(document).ready(function(){
 				$(".colorbox").colorbox({rel:'colorbox', transition:"fade"});
+				$(".group1").colorbox({rel:'group1', transition:"fade"});
+				$(".group2").colorbox({rel:'group1', transition:"fade"});
+				$(".group3").colorbox({rel:'group1', transition:"fade"});
 			});
 		</script>
     	<?
