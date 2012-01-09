@@ -6,6 +6,7 @@ class load
 		$this->contr = &$controller;
 	}
 	
+	//just simple include the view.
 	function view($name)
 	{
 		global $fathr;
@@ -14,6 +15,7 @@ class load
 		}
 	}
 	
+	//check if the model should load db, then save it to the controller.
 	function model($name, $db = false)
 	{
 		global $fathr;
@@ -26,6 +28,7 @@ class load
 		}
 	}
 		
+	//check if the helper is the db or not, then save it to the controller.
 	function helper($name)
 	{
 		global $fathr;
@@ -46,6 +49,7 @@ class load
 		}
 	}
 	
+	//load the theme class with the right theme chosen.
 	function theme($theme = null)
 	{
 		global $fathr;

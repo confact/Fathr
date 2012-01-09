@@ -8,6 +8,7 @@ class Father {
 	public $theme;
 	private $loader;
 	
+	//loads the config and set it, and send it on to the loader
 	function __construct()
 	{
 		$this->father = &$this;
@@ -25,6 +26,7 @@ class Father {
         return self::$father;
     }
     
+    //the actual function that make everything work.
     public function run()
     {
     	if($this->config['theme_from_core'])

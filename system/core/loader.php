@@ -17,7 +17,8 @@ class loader {
 		}
 		$this->url = $this->urlslug($_GET['page']);
 	}
-
+	
+	//checking the classes if exist and so on, if it does it will go on to alive();
 	public function run()
 	{
 		if($this->url[0] == "" OR $this->url[0] == "index.php") {
@@ -41,7 +42,7 @@ class loader {
 		}
 	}
 	
-
+	//this checks for the function and parameters in the controller saved from the function run();
 	private function alive()
 	{
 		if(isset($this->url[1]) AND $this->url[1] != NULL)
@@ -66,6 +67,8 @@ class loader {
 			$this->openFunction("index");
 		}
 	}
+	
+	//checks for parameters and then call the function in the controller in the right way.
 	private function openFunction($function, $parameters = null)
 	{
 		global $fathr;
@@ -79,6 +82,8 @@ class loader {
 			call_user_func_array(array($fathr->controller, $function), $parameters);
 		}
 	}
+	
+	//just check the url to find controllers, function/actions and parameters.
 	private function urlslug($url)
 	{
 		$slug = explode('/',$url);
@@ -90,11 +95,13 @@ class loader {
 		return $slug;
 	}
 	
+	//simple error shower.
 	private function show_error($errorid = "500")
 	{
 		echo " ERROR " . $errorid . " - We had some problems. come back later.";
 	} 
 	
+	//a working but ugly way to split the array to just containing parameters for the call_user_func_array();
 	private function split_urlToOnlyParameters($array)
 	{
 		$parameters = array();
