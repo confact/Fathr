@@ -16,11 +16,22 @@ it is very inspired of CodeIgniter that i really digg. This framework has a alre
 
 
 ### License
+this is some of the awesome third parties stuff i use in Fathr. Here is them with the licenses. Check their website out too, you can google it.
 
 Bootstrap
 ---------
 Copyright 2011 Twitter, Inc.
 Apache License, Version 2.0: http://www.apache.org/licenses/LICENSE-2.0
+
+Colorbox
+---------
+Copyright jackmoore 2011 
+MIT License: http://www.opensource.org/licenses/mit-license.php
+
+CKEditor
+---------
+Copyright CKSource 2011 
+GPL License: http://www.gnu.org/licenses/gpl.html
 
 -----------------------
 dun/confact
