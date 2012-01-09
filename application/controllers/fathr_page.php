@@ -37,6 +37,7 @@ class Fathr_page extends Fathr_cms {
 			}
 			$this->theme->setHeaderTitle($headline);
 			$this->theme->setMainView("fathr_pageView");
+			$this->theme->setColorboxOn();
 		}
 		else {
 			$this->theme->setError("No page found - check the url.");
