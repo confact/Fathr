@@ -171,9 +171,9 @@ class Fathr_admin extends Fathr_cms {
 			$sidebarside = $_POST['sidebarside'];
 			$indexed=0;
 			$date = strtotime("now");
-			if($_POST['indexed'] == "true") { $indexed = 1;}
+			if(isset($_POST['indexed']) AND $_POST['indexed'] == "true") { $indexed = 1;}
 			$dated = 0;
-			if($_POST['dated'] == "true")
+			if(isset($_POST['dated']) AND $_POST['dated'] == "true")
 			{
 				$dated = 1;
 				$this->db->query("INSERT INTO {$this->config['table_tag']}pages (title, headline, text, indexed, dated, date, sidebar, sidebarside) VALUES ('{$title}', '{$headline}', '{$text}', '{$indexed}', '{$dated}', '{$date}','{$sidebarid}', '{$sidebarside}');");
