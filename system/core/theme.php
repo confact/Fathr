@@ -32,10 +32,11 @@ class Theme {
 	function __construct($theme = "default")
 	{
 		include('theme/core/ckeditor/ckeditor.php');
-		$this->editor = new CKEditor();
 		$this->theme = $theme;
 		global $fathr;
 		$this->sitepath = $fathr->config['sitepath'];
+		$siteurl = "http://".$_SERVER["SERVER_NAME"]."/".$config['sitepath']."/theme/core/ckeditor/";
+		$this->editor = new CKEditor($siteurl);
 	}
 	function setError($error)
 	{
