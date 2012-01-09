@@ -267,8 +267,6 @@ class Fathr_admin extends Fathr_cms {
 			$url = $_POST['url'];
 			$theme = $_POST['theme'];
 			$blogy = 0;
-			print_r($_POST);
-			echo "<br />";
 			if(isset($_POST['blogy']) AND $_POST['blogy'] == "true") {
 				$blogy = 1;
 			}
