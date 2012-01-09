@@ -10,6 +10,7 @@ class Fathr_frontcontroller extends Fathr_cms {
 		$this->theme->setPageBrand($this->settings["sitename"]);
 		$this->theme->setPageBrandUrl("/".$this->config['sitepath']);
 		$this->theme->setMenu($this->menu);
+		$this->theme->setColorboxOn();
 	}
 	
 	function index() {
