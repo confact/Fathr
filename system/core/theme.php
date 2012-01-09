@@ -31,7 +31,7 @@ class Theme {
 
 	function __construct($theme = "default")
 	{
-		include('theme/core/ckeditor/ckeditor_php5.php');
+		include('theme/core/ckeditor/ckeditor.php');
 		$this->editor = new CKEditor();
 		$this->theme = $theme;
 		global $fathr;
