@@ -7,15 +7,16 @@ class Fathr_cms extends Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->helper("db");
-		
-		$menuquery = $this->db->get("{$this->config['table_tag']}menu");
+		$this->load->model("fathr_menu", true);
+		$this->load->model("fathr_settings", true);
+		$menuquery = $this->fathr_menu->getMenu();
 		if ($menuquery) {
 			while($row = mysql_fetch_array($menuquery))
 			{
 				$this->menu[$row[1]] = $row[2];
 			}
 		}
-		$settingsquery = $this->db->get("{$this->config['table_tag']}settings");
+		$settingsquery = $this->fathr_settings->getSettings();
 		if ($settingsquery) {
 			while($row = mysql_fetch_array($settingsquery))
 			{

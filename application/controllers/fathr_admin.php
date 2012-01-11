@@ -43,15 +43,10 @@ class Fathr_admin extends Fathr_cms {
 	
 	function doLogin()
 	{
+		$this->load->model("fathr_admins", true);
 		$username = mysql_escape_string($_POST['username']);
 		$password = sha1(md5(mysql_escape_string($_POST['password']))); 
-		$query = $this->db->query("SELECT id from {$this->config['table_tag']}admins WHERE username='{$username}' and password='{$password}' LIMIT 1");
-		$found = false;
-		$row = mysql_fetch_array($query);
-		if($row['id'] != "")
-		{
-			$found = true;
-		}
+		$found = $this->fathr_admins->login($username, $password);
 		if($found) {
 			$this->session->setUser("admin", "hellyeah!");
 			header("Location: /".$this->config['sitepath']."fathr_admin/dashboard/");
@@ -88,8 +83,8 @@ class Fathr_admin extends Fathr_cms {
 			header("Location: /".$this->config['sitepath']."fathr_admin/");
 		}
 		else {
-		$this->menulist = $this->db->get("{$this->config['table_tag']}menu");
-		$this->menulistmodal = $this->db->get("{$this->config['table_tag']}menu");
+		$this->menulist = $this->fathr_menu->getMenu();
+		$this->menulistmodal = $this->fathr_menu->getMenu();
 		$this->theme->setMainView("fathr_adminmenuList");
 		
 		$sidebar = '    <h2>Add menu item</h2>
@@ -135,8 +130,9 @@ class Fathr_admin extends Fathr_cms {
 			header("Location: /".$this->config['sitepath']."fathr_admin/");
 		}
 		else {
-			$this->pagelist = $this->db->get("{$this->config['table_tag']}pages");
-			$this->pagesquery = $this->db->query("SELECT id,title from {$this->config['table_tag']}pages");
+			$this->load->model("fathr_page_model", true);
+			$this->pagelist = $this->fathr_page_model->getAllpages();
+			$this->pagesquery = $this->fathr_page_model->getAllpagesSmall();
 			$this->theme->setMainView("fathr_adminPageAdd");
 			$this->theme->setHeaderTitle("Add a Page <small>Here do you add a page.</small>");
 			$this->theme->render();
@@ -149,7 +145,8 @@ class Fathr_admin extends Fathr_cms {
 			header("Location: /".$this->config['sitepath']."fathr_admin/");
 		}
 		else {
-			$this->pagequery = $this->db->query("SELECT id,title, headline, text, dated, date, indexed, sidebar, sidebarside from {$this->config['table_tag']}pages WHERE {$this->config['table_tag']}pages.id='{$id}'");
+			$this->load->model("fathr_page_model", true);
+			$this->pagequery = $this->fathr_page_model->getPage($id);
 			$this->pagesquery = $this->db->query("SELECT id,title from {$this->config['table_tag']}pages WHERE {$this->config['table_tag']}pages.id!='{$id}'");
 			$this->page = mysql_fetch_array($this->pagequery);
 			$this->theme->setMainView("fathr_adminPageEdit");
@@ -164,6 +161,7 @@ class Fathr_admin extends Fathr_cms {
 			header("Location: /".$this->config['sitepath']."fathr_admin/");
 		}
 		else {
+			$this->load->model("fathr_page_model", true);
 			$title = $_POST['title'];
 			$headline = $_POST['headline'];
 			$text = $_POST['text'];
@@ -173,14 +171,7 @@ class Fathr_admin extends Fathr_cms {
 			$date = strtotime("now");
 			if(isset($_POST['indexed']) AND $_POST['indexed'] == "true") { $indexed = 1;}
 			$dated = 0;
-			if(isset($_POST['dated']) AND $_POST['dated'] == "true")
-			{
-				$dated = 1;
-				$this->db->query("INSERT INTO {$this->config['table_tag']}pages (title, headline, text, indexed, dated, date, sidebar, sidebarside) VALUES ('{$title}', '{$headline}', '{$text}', '{$indexed}', '{$dated}', '{$date}','{$sidebarid}', '{$sidebarside}');");
-			}
-			else {
-				$this->db->query("INSERT INTO {$this->config['table_tag']}pages (title, headline, text, indexed, date, sidebar, sidebarside) VALUES ('{$title}', '{$headline}', '{$text}', '{$indexed}','{$date}','{$sidebarid}', '{$sidebarside}');");
-			}
+			$this->fathr_page_model->addPage($title, $headline, $text, $sidebarid, $sidebarside, $indexed, $date, $_POST['dated']);
 			header("Location: /".$this->config['sitepath']."fathr_admin/pageList");
 		}
 	}
@@ -191,6 +182,7 @@ class Fathr_admin extends Fathr_cms {
 			header("Location: /".$this->config['sitepath']."fathr_admin/");
 		}
 		else {
+			$this->load->model("fathr_page_model", true);
 			$title = $_POST['title'];
 			$headline = $_POST['headline'];
 			$text = $_POST['text'];
@@ -199,11 +191,7 @@ class Fathr_admin extends Fathr_cms {
 			$indexed=0;
 			if(isset($_POST['indexed']) AND $_POST['indexed'] == "true") { $indexed = 1;}
 			$dated = 0;
-			if(isset($_POST['dated']) AND $_POST['dated'] == "true")
-			{
-				$dated = 1;
-			}
-			$this->db->query("UPDATE {$this->config['table_tag']}pages SET {$this->config['table_tag']}pages.title='{$title}', {$this->config['table_tag']}pages.headline='{$headline}', {$this->config['table_tag']}pages.text='{$text}', {$this->config['table_tag']}pages.indexed='{$indexed}', {$this->config['table_tag']}pages.dated='{$dated}', {$this->config['table_tag']}pages.sidebar='{$sidebarid}', {$this->config['table_tag']}pages.sidebarside='{$sidebarside}' WHERE {$this->config['table_tag']}pages.id='{$id}'");
+			$this->fathr_page_model->updatePage($id, $title, $headline, $text, $sidebarid, $sidebarside, $indexed, $_POST['dated']);
 			header("Location: /".$this->config['sitepath']."fathr_admin/pageList");
 		}
 	}
@@ -214,7 +202,8 @@ class Fathr_admin extends Fathr_cms {
 			header("Location: /".$this->config['sitepath']."fathr_admin/");
 		}
 		else {
-			$this->db->query("DELETE FROM {$this->config['table_tag']}pages WHERE id={$id};");
+			$this->load->model("fathr_page_model", true);
+			$this->fathr_page_model->deletePage($id);
 			header("Location: /".$this->config['sitepath']."fathr_admin/pageList");
 		}
 	}	
@@ -228,7 +217,7 @@ class Fathr_admin extends Fathr_cms {
 		else {
 			$name = $_POST['name'];
 			$url = $_POST['url'];
-			$this->db->query("INSERT INTO {$this->config['table_tag']}menu (names, url) VALUES ('{$name}', '{$url}');");
+			$this->fathr_menu->addMenu($name, $url);
 			header("Location: /".$this->config['sitepath']."fathr_admin/menuList");
 		}
 	}
@@ -241,7 +230,7 @@ class Fathr_admin extends Fathr_cms {
 		else {
 			$name = $_POST['name'];
 			$url = $_POST['url'];
-			$this->db->query("UPDATE {$this->config['table_tag']}menu SET {$this->config['table_tag']}menu.names='{$name}', {$this->config['table_tag']}menu.url='{$url}' WHERE {$this->config['table_tag']}menu.id='{$id}'");
+			$this->fathr_menu->updateMenu($id, $name, $url);
 			//header("Location: /".$this->config['sitepath']."/fathr_admin/menuList");
 		}
 	}
@@ -252,7 +241,7 @@ class Fathr_admin extends Fathr_cms {
 			header("Location: /".$this->config['sitepath']."fathr_admin/");
 		}
 		else {
-			$this->db->query("DELETE FROM {$this->config['table_tag']}menu WHERE id={$id};");
+			$this->fathr_menu->deleteMenu($id);
 			header("Location: /".$this->config['sitepath']."fathr_admin/menuList");
 		}
 	}
@@ -270,10 +259,7 @@ class Fathr_admin extends Fathr_cms {
 			if(isset($_POST['blogy']) AND $_POST['blogy'] == "true") {
 				$blogy = 1;
 			}
-			$this->db->query("UPDATE {$this->config['table_tag']}settings SET {$this->config['table_tag']}settings.value='{$sitename}' WHERE {$this->config['table_tag']}settings.key='sitename'");
-			$this->db->query("UPDATE {$this->config['table_tag']}settings SET {$this->config['table_tag']}settings.value='{$url}' WHERE {$this->config['table_tag']}settings.key='url'");
-			$this->db->query("UPDATE {$this->config['table_tag']}settings SET {$this->config['table_tag']}settings.value='{$theme}' WHERE {$this->config['table_tag']}settings.key='theme'");
-			$this->db->query("UPDATE {$this->config['table_tag']}settings SET {$this->config['table_tag']}settings.value='{$blogy}' WHERE {$this->config['table_tag']}settings.key='blogyindex'");
+			$this->fathr_settings->setSettings($sitename, $url, $theme, $blogy);
 			header("Location: /".$this->config['sitepath']."fathr_admin/dashboard");
 		}
 	}
