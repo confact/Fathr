@@ -19,5 +19,18 @@ class Fathr_menu extends Model {
 	{
 		$this->db->query("DELETE FROM {$this->config['table_tag']}menu WHERE id={$id};");
 	}
+	
+	function install($url)
+	{
+		$query = $this->db->query("CREATE TABLE IF NOT EXISTS `{$this->config['table_tag']}menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `names` varchar(300) NOT NULL,
+  `url` varchar(300) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;");
+		$this->db->query("INSERT INTO `{$this->config['table_tag']}menu` (`id`, `names`, `url`) VALUES
+(1, 'admin', '{$url}/fathr_admin/');");
+		return $query;
+	}
 }
 ?>
