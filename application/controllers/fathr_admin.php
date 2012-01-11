@@ -171,7 +171,8 @@ class Fathr_admin extends Fathr_cms {
 			$date = strtotime("now");
 			if(isset($_POST['indexed']) AND $_POST['indexed'] == "true") { $indexed = 1;}
 			$dated = 0;
-			$this->fathr_page_model->addPage($title, $headline, $text, $sidebarid, $sidebarside, $indexed, $date, $_POST['dated']);
+			if(isset($_POST['dated']) AND $_POST['dated'] == "true") { $dated = 1;}
+			$this->fathr_page_model->addPage($title, $headline, $text, $sidebarid, $sidebarside, $indexed, $date, $dated);
 			header("Location: /".$this->config['sitepath']."fathr_admin/pageList");
 		}
 	}
@@ -191,7 +192,8 @@ class Fathr_admin extends Fathr_cms {
 			$indexed=0;
 			if(isset($_POST['indexed']) AND $_POST['indexed'] == "true") { $indexed = 1;}
 			$dated = 0;
-			$this->fathr_page_model->updatePage($id, $title, $headline, $text, $sidebarid, $sidebarside, $indexed, $_POST['dated']);
+			if(isset($_POST['dated']) AND $_POST['dated'] == "true") { $dated = 1;}
+			$this->fathr_page_model->updatePage($id, $title, $headline, $text, $sidebarid, $sidebarside, $indexed, $dated);
 			header("Location: /".$this->config['sitepath']."fathr_admin/pageList");
 		}
 	}

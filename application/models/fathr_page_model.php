@@ -42,7 +42,7 @@ class Fathr_page_model extends Model {
 	function addPage($title, $headline, $text, $sidebarid, $sidebarside, $indexed, $date, $dater = 0)
 	{
 		$dated = 0;
-		if(isset($dater) AND $dater == "true")
+		if(isset($dater) AND $dater == 1)
 		{
 			$dated = 1;
 			$this->db->query("INSERT INTO {$this->config['table_tag']}pages (title, headline, text, indexed, dated, date, sidebar, sidebarside) VALUES ('{$title}', '{$headline}', '{$text}', '{$indexed}', '{$dated}', '{$date}','{$sidebarid}', '{$sidebarside}');");
@@ -55,7 +55,7 @@ class Fathr_page_model extends Model {
 	function updatePage($id, $title, $headline, $text, $sidebarid, $sidebarside, $indexed, $dater = 0)
 	{
 		$dated = 0;
-		if(isset($dater) AND $dater == "true")
+		if(isset($dater) AND $dater == 1)
 		{
 			$dated = 1;
 		}
