@@ -17,6 +17,7 @@ class Model {
 			}
 			$this->db = &$fathr->db;
 		}
+		$this->config = &$fathr->config;
 		$this->load = new load(&$this);
 	}
 }
