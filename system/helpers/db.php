@@ -8,7 +8,6 @@ class db {
 	
 	function __construct()
 	{
-		$this->instance = &$this;
 		require_once('config/db.php');
 		$this->config = $db_config;
 		unset($db_config);

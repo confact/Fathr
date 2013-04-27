@@ -11,7 +11,6 @@ class Father {
 	//loads the config and set it, and send it on to the loader
 	function __construct()
 	{
-		$this->father = &$this;
 		global $config;
 		$this->config = $config;
 		unset($config);

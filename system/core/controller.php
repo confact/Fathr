@@ -7,7 +7,7 @@ class Controller {
 	function __construct()
 	{
 		global $fathr;
-		$this->load = new load(&$this);
+		$this->load = new load($this);
 		$this->config = &$fathr->config;
 		if(isset($fathr->theme))
 		{

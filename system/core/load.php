@@ -55,13 +55,13 @@ class load
 		global $fathr;
 		if(!isset($fathr->theme)) {
 			if($theme != null) {
-				$father->theme = new Theme($theme);
+				$fathr->theme = new Theme($theme);
 			}
 			else {
-				$father->theme = new Theme();
+				$fathr->theme = new Theme();
 			}
 		}
-		$this->contr->theme = &$father->theme;
+		$this->contr->theme = &$fathr->theme;
 	}
 }
 ?>
