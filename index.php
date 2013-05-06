@@ -8,7 +8,7 @@ if($config['developmentmode'])
 	ini_set('display_errors', '1');
 }
 
-require_once('system/core/boot.php');
+require_once('system/boot.php');
 
 $fathr = Father::instance();
 $fathr->run();
