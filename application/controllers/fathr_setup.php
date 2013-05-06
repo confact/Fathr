@@ -24,16 +24,16 @@ class Fathr_setup extends Controller {
 		$this->load->model("fathr_settings", true);
 	
 		//fixing variables for the setup from the form.
-		$sitename = mysql_escape_string($_POST['sitename']);
-		$url = mysql_escape_string($_POST['url']);
-		$theme = mysql_escape_string($_POST['theme']);
+		$sitename = mysql_real_escape_string($_POST['sitename']);
+		$url = mysql_real_escape_string($_POST['url']);
+		$theme = mysql_real_escape_string($_POST['theme']);
 		$blogy = 0;
 		if(isset($_POST['blogy']) AND $_POST['blogy'] == "true") {
 			$blogy = 1;
 		}
 	
-		$username = mysql_escape_string($_POST['username']);
-		$password = sha1(md5(mysql_escape_string($_POST['password'])));
+		$username = mysql_real_escape_string($_POST['username']);
+		$password = sha1(md5(mysql_real_escape_string($_POST['password'])));
 	
 	
 		//fixing the admin table first, creating table admins and then insert the admin in it.

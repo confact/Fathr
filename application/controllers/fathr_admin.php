@@ -44,8 +44,8 @@ class Fathr_admin extends Fathr_cms {
 	function doLogin()
 	{
 		$this->load->model("fathr_admins", true);
-		$username = mysql_escape_string($_POST['username']);
-		$password = sha1(md5(mysql_escape_string($_POST['password']))); 
+		$username = mysql_real_escape_string($_POST['username']);
+		$password = sha1(md5(mysql_real_escape_string($_POST['password']))); 
 		$found = $this->fathr_admins->login($username, $password);
 		if($found) {
 			$this->session->setUser("admin", "hellyeah!");
