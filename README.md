@@ -2,7 +2,7 @@ Fathr - The Father of MVC+CMS frameworks.
 =============
 This is a schoolwork i did for a course on www.bth.se
 
-It is under work, when it are more or less complete, it will have the description like below:
+It is under work, when it's more or less complete, it will have the description below:
 
 it is very inspired of CodeIgniter that i really digg. This framework has a already inbuilt CMS-framework over the MVC-framework for more differents ways to work with a webpage.
 
@@ -16,7 +16,7 @@ it is very inspired of CodeIgniter that i really digg. This framework has a alre
 
 
 ### License
-this is some of the awesome third parties stuff i use in Fathr. Here is them with the licenses. Check their website out too, you can google it.
+this is some of the awesome third parties stuff i use in Fathr. Here they are with the licenses. Check their website too, you can google it.
 
 Bootstrap
 ---------
