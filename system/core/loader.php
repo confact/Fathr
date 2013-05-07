@@ -22,7 +22,6 @@ class loader {
 	public function run()
 	{
 		if($this->url[0] == "" OR $this->url[0] == "index.php") {
-			require_once($this->controllerpath . $this->defaultcontroller . '.php');
 			$this->controllername = ucfirst($this->defaultcontroller);
 			$this->controller = new $this->controllername();
 			$this->alive();
@@ -31,7 +30,6 @@ class loader {
 			
 			if(file_exists($this->controllerpath . $this->url[0] . '.php'))
 			{
-				require_once($this->controllerpath . $this->url[0] . '.php');
 				$this->controllername = ucfirst($this->url[0]);
 				$this->controller = new $this->controllername();
 				$this->alive();

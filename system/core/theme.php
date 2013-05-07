@@ -98,7 +98,7 @@ class Theme {
 	{
 		$this->pagebrand = $pagebrand;
 	}
-	function setPageBrandUrl($url)
+	function setPageBrandUrl($url = "")
 	{
 		$this->pagebrandurl = $url;
 	}
