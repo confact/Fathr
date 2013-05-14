@@ -5,7 +5,7 @@
 	
 	<testsuites>
     	<testsuite name="Fathr Test Suite">
-	       	 <directory suffix="test.php">./system</directory>    
+	       	 <directory suffix="Test.php">./system</directory>    
         </testsuite>
 	</testsuites>
     

@@ -24,6 +24,12 @@ class load
 			if(!isset($this->contr->$name)) {
 				$this->contr->$name = new $modelname($db);
 			}
+			else {
+				throw new Exception("Model already set.");
+			}
+		}
+		else {
+			throw new Exception("Model doesn't exist.");
 		}
 	}
 		
@@ -44,6 +50,9 @@ class load
 					$this->contr->$name = new $modelname();
 				}
 			}
+		}
+		else {
+			throw new Exception("helper doesn't exist.");
 		}
 	}
 }
