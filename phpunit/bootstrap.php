@@ -43,6 +43,7 @@ class bootstrap
 	spl_autoload_register(array($models_loader, 'autoload'));
 	spl_autoload_register(array($views_loader, 'autoload'));
 	
-?>
+	global $fathr;
+	$fathr = Father::instance();
 
 ?>

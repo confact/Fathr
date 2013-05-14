@@ -3,7 +3,7 @@ php:
   - "5.5"
   - "5.4"
   - "5.3"
-script: cd phpunit && phpunit -c phpunit.xml
+script: cd phpunit && phpunit --tap -c phpunit.xml
 
 branches:
   only:

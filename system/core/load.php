@@ -29,7 +29,7 @@ class load
 			}
 		}
 		else {
-			throw new Exception("Model doesn't exist.");
+			throw new Exception("Model at path ".$fathr->config['applicationpath'] . '/models/' . $name . '.php'."doesn't exist.");
 		}
 	}
 		

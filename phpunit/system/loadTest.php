@@ -5,11 +5,23 @@ class loadTest extends PHPUnit_Framework_TestCase {
 	
 	function __construct()
 	{
-		$controller = new Controller();
+		$controller = new Example();
 		$this->load = new load($controller);
 	}
+
+	function testModelWithNoExcpetion()
+	{
+		try {
+            $this->load->model("user");
+            return;
+        }
+ 
+        catch (Exception $expected) {
+            $this->fail($expected->getMessage());
+        }
+	}
 	
-	function testModelwithExcpetion()
+	function testModelWithExcpetion()
 	{
 		try {
             $this->load->model("test");
@@ -22,7 +34,21 @@ class loadTest extends PHPUnit_Framework_TestCase {
         $this->fail('An expected exception has not been raised.');
 	}
 	
-	function testHelperwithExcpetion()
+	function testModelWithDuplicateExcpetion()
+	{
+		try {
+            $this->load->model("user");
+            $this->load->model("user");
+        }
+ 
+        catch (Exception $expected) {
+            return;
+        }
+ 
+        $this->fail('An expected exception has not been raised.');
+	}
+	
+	function testHelperWithExcpetion()
 	{
 		try {
             $this->load->helper("test");

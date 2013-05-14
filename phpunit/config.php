@@ -1,7 +1,7 @@
 <?php
 
 /* This is the config-file. */
-
+global $config;
 //development mode
 $config['developmentmode'] = true;
 
@@ -12,7 +12,7 @@ $config['sitepath'] = "";
 $config['table_tag'] = "fathr_";
 
 // Applicationpath
-$config['applicationpath'] = "./application";
+$config['applicationpath'] = "../application";
 
 // This is the default controller you will use if no page is set
 $config['default_controller'] = "fathr_frontcontroller";

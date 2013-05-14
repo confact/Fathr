@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit 
     bootstrap="./bootstrap.php" 
-    colors="true">
+    colors="true"
+    backupGlobals="true">
 	
 	<testsuites>
     	<testsuite name="Fathr Test Suite">
