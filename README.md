@@ -1,4 +1,4 @@
-Fathr - The Father of MVC+CMS frameworks.
+Fathr - The Father of MVC+CMS frameworks. [![Build Status](https://travis-ci.org/confact/Fathr.png?branch=Just-Framework)](https://travis-ci.org/confact/Fathr)
 =============
 This is a schoolwork i did for a course on www.bth.se
 
