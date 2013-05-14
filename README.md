@@ -21,22 +21,5 @@ We are in need of helpers, fixes and improvements. Be free to do pull-requests a
 ### License
 Fathr is under MIT License so be free to do whatever you want, read the license in the license file.
 
-this is some of the awesome third parties stuff i use in Fathr. Here they are with the licenses. Check their website too, you can google it.
-
-Bootstrap
----------
-Copyright 2011 Twitter, Inc.
-Apache License, Version 2.0: http://www.apache.org/licenses/LICENSE-2.0
-
-Colorbox
----------
-Copyright jackmoore 2011 
-MIT License: http://www.opensource.org/licenses/mit-license.php
-
-CKEditor
----------
-Copyright CKSource 2011 
-GPL License: http://www.gnu.org/licenses/gpl.html
-
 -----------------------
 dun/confact
