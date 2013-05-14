@@ -1,0 +1,8 @@
+{
+	"description" : "Dependencies for Fathr's testing environment",
+	"name" : "confact/fathr",
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*",
+        "php": ">=5.3.*"
+    }
+}
