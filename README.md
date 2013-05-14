@@ -6,6 +6,8 @@ It is under work, when it's more or less complete, it will have the description 
 
 it is very inspired of CodeIgniter that i really digg. This framework has a already inbuilt CMS-framework over the MVC-framework for more differents ways to work with a webpage.
 
+### Contribute
+We are in need of helpers, fixes and improvements. Be free to do pull-requests and report bugs and request helpers in the issues-tab.
 
 ### Setup:
 1. rename the configs in the config directory to config.php and db.php, in other words, just remove "_sample" from the name.
@@ -16,7 +18,9 @@ it is very inspired of CodeIgniter that i really digg. This framework has a alre
 
 
 ### License
-this is some of the awesome third parties stuff i use in Fathr. Here they are with the licenses. Check their website too, you can google it.
+Fathr is under MIT License so be free to do whatever you want, read the license in the license file.
+
+This is some of the awesome third parties stuff i use in Fathr. Here they are with the licenses. Check their website too, you can google it.
 
 Bootstrap
 ---------
