@@ -37,7 +37,7 @@ class load
 	function helper($name)
 	{
 		global $fathr;
-		if(file_exists('system/helpers/' . $name . '.php')) {
+		if(file_exists($fathr->config['systempath'] . '/helpers/' . $name . '.php')) {
 			if($name == "db")
 			{
 				$modelname = ucfirst($name);
