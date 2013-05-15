@@ -4,7 +4,7 @@ class Session {
 	// This helper is tested.
 	function __construct()
 	{
-		session_start();
+		if (!isset($_SESSION)) session_start();
 	}
 	
 	function getUser($key)
