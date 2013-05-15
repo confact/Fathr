@@ -14,6 +14,9 @@ $config['table_tag'] = "fathr_";
 // Applicationpath
 $config['applicationpath'] = "../application";
 
+// Systempath
+$config['systempath'] = "../system";
+
 // This is the default controller you will use if no page is set
 $config['default_controller'] = "example";
 
