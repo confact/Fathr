@@ -9,7 +9,12 @@ $mysqldatabase = getenv('mysqldatabase')  ?: 'myapp_test';
 global $mysqlusername;
 $mysqlusername=getenv('mysqlusername')  ?: 'root';
 global $mysqlpassword;
-$mysqlpassword=getenv('mysqlpassword')  ?: 'root';
+if(getenv('mysqlpassword')) {
+	$mysqlpassword = ""; 
+}
+else {
+	$mysqlpassword = "root";
+}
 global $mysqladdress;
 $mysqladdress=getenv('mysqladdress')  ?: ':/Applications/MAMP/tmp/mysql/mysql.sock';
 require_once('config/config.php');
