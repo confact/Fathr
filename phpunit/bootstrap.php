@@ -4,7 +4,18 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL | E_STRICT);
 
 
+global $mysqldatabase;
+$mysqldatabase = getenv('mysqldatabase')  ?: 'myapp_test';
+global $mysqlusername;
+$mysqlusername=getenv('mysqlusername')  ?: 'root';
+global $mysqlpassword;
+$mysqlpassword=getenv('mysqlpassword')  ?: 'root';
+global $mysqladdress;
+$mysqladdress=getenv('mysqladdress')  ?: ':/Applications/MAMP/tmp/mysql/mysql.sock';
 require_once('config/config.php');
+
+
+
 
 class bootstrap
 {

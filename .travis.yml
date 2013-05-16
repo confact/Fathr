@@ -8,6 +8,10 @@ services: mysql
 
 env:
   - DB=mysql
+  - mysqldatabase=myapp_test
+  - mysqlusername=root
+  - mysqlpassword=
+  - mysqladdress=localhost
   
 before_script:
   - wget http://getcomposer.org/composer.phar
