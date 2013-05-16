@@ -7,12 +7,13 @@ php:
 services: mysql
 
 env:
-  - DB=mysql mysqldatabase=myapp_test mysqlusername=root mysqladdress=localhost mysqlpassword=
+  - DB=mysql mysqldatabase=myapp_test mysqlusername=root mysqladdress=localhost mysqlpassword=password
   
 before_script:
   - wget http://getcomposer.org/composer.phar
   - php composer.phar install
   - mysql -e 'create database IF NOT EXISTS myapp_test;' -uroot
+  - echo "USE mysql;\nUPDATE user SET password=PASSWORD('password') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
   
 script: cd phpunit && phpunit --tap -c phpunit.xml --coverage-text
 
