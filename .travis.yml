@@ -10,7 +10,8 @@ env:
   - DB=mysql
   
 before_script:
-  - composer install
+  - wget http://getcomposer.org/composer.phar
+  - php composer.phar install
   - mysql -e 'create database IF NOT EXISTS myapp_test;' -uroot
   
 script: cd phpunit && phpunit --tap -c phpunit.xml --coverage-text
