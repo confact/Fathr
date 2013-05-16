@@ -7,11 +7,7 @@ php:
 services: mysql
 
 env:
-  - DB=mysql
-  - mysqldatabase=myapp_test
-  - mysqlusername=root
-  - mysqlpassword=
-  - mysqladdress=localhost
+  - DB=mysql mysqldatabase=myapp_test mysqlusername=root mysqladdress=localhost mysqlpassword=
   
 before_script:
   - wget http://getcomposer.org/composer.phar
