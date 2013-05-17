@@ -24,6 +24,12 @@ class load
 			if(!isset($this->contr->$name)) {
 				$this->contr->$name = new $modelname($db);
 			}
+			else {
+				throw new Exception("Model already set.");
+			}
+		}
+		else {
+			throw new Exception("Model at path ".$fathr->config['applicationpath'] . '/models/' . $name . '.php'."doesn't exist.");
 		}
 	}
 		
@@ -31,7 +37,7 @@ class load
 	function helper($name)
 	{
 		global $fathr;
-		if(file_exists('system/helpers/' . $name . '.php')) {
+		if(file_exists($fathr->config['systempath'] . '/helpers/' . $name . '.php')) {
 			if($name == "db")
 			{
 				$modelname = ucfirst($name);
@@ -45,21 +51,9 @@ class load
 				}
 			}
 		}
-	}
-	
-	//load the theme class with the right theme chosen.
-	function theme($theme = null)
-	{
-		global $fathr;
-		if(!isset($fathr->theme)) {
-			if($theme != null) {
-				$fathr->theme = new Theme($theme);
-			}
-			else {
-				$fathr->theme = new Theme();
-			}
+		else {
+			throw new Exception("helper doesn't exist.");
 		}
-		$this->contr->theme = &$fathr->theme;
 	}
 }
 ?>
