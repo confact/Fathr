@@ -14,6 +14,7 @@ class db {
 		$this->open();
 	}
 	
+	
 	function open()
 	{
 		$this->conn = mysql_connect($this->config['db_host'], $this->config['db_user'], $this->config['db_password'])
@@ -29,20 +30,67 @@ class db {
         return self::$instance;
 	}
 	
+	
+	/**
+	 * query function.
+	 * 
+	 * @access public
+	 * @param mixed $string
+	 * @return Databasemodel
+	 */
 	function query($string)
 	{
 		$result = mysql_query($string, $this->conn);
+		$result = Databasemodel($result);
 		return $result;
 	}
 	
-	function get($tablename, $limit = null) {
-		if($limit)
+	/**
+	 * create table function.
+	 * 
+	 * @access public
+	 * @param mixed $tablename
+	 * @param array $columns ["columnname"] => "data_type" (default: array())
+	 * @return boolean
+	 */
+	function create_table($tablename, $columns = array())
+	{
+		$column_text = "";
+		foreach($columns as $key => $value)
+		{
+			$column_text += $key . " " . $value . ", 
+			";
+		}
+		$result = mysql_query("CREATE TABLE " . $tablename . " (" . $column_text . ");");
+		
+		if($result)
+		{
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	
+	/**
+	 * get function.
+	 * 
+	 * @access public
+	 * @param mixed $tablename
+	 * @param mixed $limit (default: null)
+	 * @return Databasemodel
+	 */
+	function get($tablename, $limit = null) 
+	{
+		if(!is_null($limit))
 		{
 			$result = mysql_query("SELECT * FROM ".$tablename." LIMIT ".$limit, $this->conn);
 		}
 		else {
 			$result = mysql_query("SELECT * FROM ".$tablename, $this->conn);
 		}
+		$result = Databasemodel($result);
 		return $result;
 	}
 	
