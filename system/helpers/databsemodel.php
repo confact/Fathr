@@ -4,14 +4,28 @@ class Databasemodel {
 	
 	function __construct($result)
 	{
-		while($row=mysql_fetch_array($result))
+		if(get_class($result) == "mysqli_result")
 		{
-			foreach ($row as $key => $val) {
-				if (is_int($key)) {
-					unset($row[$key]);
-    			}
-  			}
-			$this->array[] = $row;
+			while($row=$result->fetch_array(MYSQLI_ASSOC))
+			{
+				foreach ($row as $key => $val) {
+					if (is_int($key)) {
+						unset($row[$key]);
+					}
+				}
+				$this->array[] = $row;
+			}
+		}
+		else {
+			while($row=mysql_fetch_array($result))
+			{
+				foreach ($row as $key => $val) {
+					if (is_int($key)) {
+						unset($row[$key]);
+					}
+				}
+				$this->array[] = $row;
+			}
 		}
 	}
 	

@@ -4,6 +4,7 @@ class db {
 	// This helper is not tested!
 	private static $instance = "";
 	private $conn = "";
+	private $mysqli = false;
 	private $config = array();
 	
 	function __construct()
@@ -15,12 +16,29 @@ class db {
 	}
 	
 	
-	function open()
+	/**
+	 * open database connection function.
+	 * 
+	 * @access private
+	 * @return void
+	 */
+	private function open()
 	{
-		$this->conn = mysql_connect($this->config['db_host'], $this->config['db_user'], $this->config['db_password'])
+		if (function_exists('mysqli_connect') && $this->config['mysqli']) {
+			$this->mysqli = true;
+			$this->conn = mysqli_connect($this->config['db_host'], $this->config['db_user'], $this->config['db_password']);
+			if (mysqli_connect_errno($this->conn)) {
+				die('Could not connect: ' . mysqli_connect_error());
+			}
+			$this->conn->select_db($this->config['db_dbname']);
+		}
+		else {
+			$this->conn = mysql_connect($this->config['db_host'], $this->config['db_user'], $this->config['db_password'])
     or die('Could not connect: ' . mysql_error());
-    	mysql_select_db($this->config['db_dbname'], $this->conn) or die('Could not select database');
+    		mysql_select_db($this->config['db_dbname'], $this->conn) or die('Could not select database');
+    	}
 	}
+	
 	
 	static function instance()
 	{
@@ -40,8 +58,27 @@ class db {
 	 */
 	function query($string)
 	{
-		$result = mysql_query($string, $this->conn);
+		$result = $this->do_query($string);
 		$result = Databasemodel($result);
+		return $result;
+	}
+	
+	
+	/**
+	 * do_query function.
+	 * 
+	 * @access private
+	 * @param mixed $string
+	 * @return void
+	 */
+	private function do_query($string)
+	{
+		if($this->mysqli) {
+			$result = $this->conn->query($string);
+		}
+		else {
+			$result = mysql_query($string, $this->conn);
+		}
 		return $result;
 	}
 	
@@ -61,7 +98,7 @@ class db {
 			$column_text += $key . " " . $value . ", 
 			";
 		}
-		$result = mysql_query("CREATE TABLE " . $tablename . " (" . $column_text . ");");
+		$result = $this->do_query("CREATE TABLE " . $tablename . " (" . $column_text . ");");
 		
 		if($result)
 		{
@@ -85,18 +122,31 @@ class db {
 	{
 		if(!is_null($limit))
 		{
-			$result = mysql_query("SELECT * FROM ".$tablename." LIMIT ".$limit, $this->conn);
+			$result = $this->do_query("SELECT * FROM ".$tablename." LIMIT ".$limit, $this->conn);
 		}
 		else {
-			$result = mysql_query("SELECT * FROM ".$tablename, $this->conn);
+			$result = $this->do_query("SELECT * FROM ".$tablename, $this->conn);
 		}
 		$result = Databasemodel($result);
 		return $result;
 	}
 	
-	function close()
+	
+	/**
+	 * close database connection function.
+	 * 
+	 * @access private
+	 * @return void
+	 */
+	private function close()
 	{
-		mysql_close($this->conn);
+		if($this->mysqli)
+		{
+			$this->conn->close();
+		}
+		else {
+			mysql_close($this->conn);
+		}
 	}
 	
 	function __destruct()
