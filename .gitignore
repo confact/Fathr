@@ -1,1 +1,4 @@
 /phpunit/log/
+/phpunit/.DS_Store
+
+/phpunit/log

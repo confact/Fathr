@@ -1,10 +1,14 @@
-Fathr - The Father of MVC+CMS frameworks. [![Build Status](https://travis-ci.org/confact/Fathr.png?branch=Just-Framework)](https://travis-ci.org/confact/Fathr)
+Fathr - The Father of MVC+CMS frameworks. [![Build Status](https://travis-ci.org/confact/Fathr.png)](https://travis-ci.org/confact/Fathr)
 =============
 This is a schoolwork i did for a course on www.bth.se
 
-It is under work, when it's more or less complete, it will have the description below:
+It is under work, when it's more or less complete, it will be inspired on CodeIgniter which i really digg.
 
-it is very inspired of CodeIgniter that i really digg. This framework has a already inbuilt CMS-framework over the MVC-framework for more differents ways to work with a webpage.
+### Just Framework
+This branch is just the framework for those who want it clean and just code on.
+
+### Contribute
+We are in need of helpers, fixes and improvements. Be free to do pull-requests and report bugs and request helpers in the issues-tab.
 
 ### Contribute
 We are in need of helpers, fixes and improvements. Be free to do pull-requests and report bugs and request helpers in the issues-tab.
@@ -13,8 +17,7 @@ We are in need of helpers, fixes and improvements. Be free to do pull-requests a
 1. rename the configs in the config directory to config.php and db.php, in other words, just remove "_sample" from the name.
 2. Setup your config with right application path and so on. Also setup your database config, you find it in the config directory.
 3. Setup your base in the .htaccess file so it is correct for your path.
-4. Go to your Fathr url in your browser. it will automatically redirect you to the setup if you haven't already setup the database with tables and data manually.
-4. Fathring on. You are finish.
+4. Fathring on, Create controllers, models and views and code on.
 
 
 ### License
@@ -36,6 +39,7 @@ CKEditor
 ---------
 Copyright CKSource 2011 
 GPL License: http://www.gnu.org/licenses/gpl.html
+=======
 
 -----------------------
 dun/confact
