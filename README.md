@@ -39,7 +39,6 @@ CKEditor
 ---------
 Copyright CKSource 2011 
 GPL License: http://www.gnu.org/licenses/gpl.html
-=======
 
 -----------------------
 dun/confact

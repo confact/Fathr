@@ -2,3 +2,4 @@
 /phpunit/.DS_Store
 
 /phpunit/log
+/phpunit/log/report
