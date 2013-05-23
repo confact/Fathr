@@ -59,7 +59,11 @@ class db {
 	function query($string)
 	{
 		$result = $this->do_query($string);
-		$result = Databasemodel($result);
+		if(!$result)
+		{
+			return false;
+		}
+		$result = new Databasemodel($result);
 		return $result;
 	}
 	
@@ -125,9 +129,13 @@ class db {
 			$result = $this->do_query("SELECT * FROM ".$tablename." LIMIT ".$limit, $this->conn);
 		}
 		else {
-			$result = $this->do_query("SELECT * FROM ".$tablename, $this->conn);
+			$result = $this->do_query("SELECT * FROM ".$tablename . ";", $this->conn);
 		}
-		$result = Databasemodel($result);
+		if(!$result)
+		{
+			return false;
+		}
+		$result = new Databasemodel($result);
 		return $result;
 	}
 	
