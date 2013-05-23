@@ -55,5 +55,20 @@ class load
 			throw new Exception("helper doesn't exist.");
 		}
 	}
+	
+	//load the theme class with the right theme chosen.
+	function theme($theme = null)
+	{
+		global $fathr;
+		if(!isset($fathr->theme)) {
+			if($theme != null) {
+				$fathr->theme = new Theme($theme);
+			}
+			else {
+				$fathr->theme = new Theme();
+			}
+		}
+		$this->contr->theme = &$fathr->theme;
+	}
 }
 ?>
