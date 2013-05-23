@@ -23,43 +23,23 @@ class Databasemodel {
 			}
 		}
 		else {
-			if(mysql_num_rows($result) > 1) {
 				while($row=mysql_fetch_array($result))
 				{
 					foreach ($row as $key => $val) {
 						if (is_int($key)) {
 							unset($row[$key]);
 						}
-						else
-						{
-							$this->array[$row["key"]] = $row["value"];
-						}
 					}
+					$this->array[] = $row;
 				}
-			}
-			else {
-				while($row=mysql_fetch_array($result))
-				{
-					foreach ($row as $key => $val) {
-						if (is_int($key)) {
-							unset($row[$key]);
-						}
-						else
-						{
-							$this->array[$row["key"]] = $row["value"];
-						}
-					}
-				}
-			}
 		}
-		print_r($this->array);
 		}
 		else {
 			return false;
 		}
 	}
 	
-	function getArray()
+	public function getArray()
 	{
 		return $this->array;
 	}
