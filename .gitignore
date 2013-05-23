@@ -1,5 +1,3 @@
-/phpunit/log/
-/phpunit/.DS_Store
-
 /phpunit/log
-/phpunit/log/report
+*.DS_Store
+/phpunit/.DS_Store
