@@ -1,3 +1,5 @@
 /phpunit/log
 *.DS_Store
 /phpunit/.DS_Store
+/config/config.php
+/config/db.php
