@@ -21,10 +21,18 @@ class Fathr_page extends Fathr_cms {
 		if($id != 0)
 		{
 			$query = $this->fathr_page_model->getPage($id);
-			$this->pagequery = mysql_fetch_array($query);
+			$this->pagequery = $query->getArray()[0];
 			$sidebarquery = $this->fathr_page_model->getSidebarsForPage($id);
-			$this->sidebar = mysql_fetch_array($sidebarquery);
-			$this->sidebar2 = mysql_fetch_array($sidebarquery);
+			$sidebarquery = $sidebarquery->getArray();
+			$this->sidebar = $sidebarquery[0];
+			
+			if(isset($sidebarquery[1])) {
+				$this->sidebar2 = $sidebarquery[1];
+			}
+			else {
+				$this->sidebar2 = null;
+			}
+			
 			$this->theme->setSidebar($this->sidebar['text'], $this->sidebar['sidebarside']);
 			if(isset($this->sidebar2))
 			{

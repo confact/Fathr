@@ -3,9 +3,9 @@
     	<tr><th>Name</th><th>Headline</th><th>Added</th><th>Actions</th></tr>
     	</thead>
     	<? 	
-    	while($row = mysql_fetch_array($fathr->controller->pagelist))
+    	foreach($fathr->controller->pagelist->getArray() as $row)
 		{
-			?><tr><td><?=$row[1]?></td><td><?=$row[2]?></td><td><? echo date('Y-m-d h:m:s', $row[6]); ?></td><td><a href="<?="/".$fathr->controller->config['sitepath']."fathr_admin/doPageDelete/".$row[0]?>">Delete</a> - <a href="<?="/".$fathr->controller->config['sitepath']."fathr_admin/pageEdit/".$row[0]?>">Edit</a></td></tr><?
+			?><tr><td><?=$row["title"]?></td><td><?=$row["headline"]?></td><td><? echo date('Y-m-d h:m:s', $row["date"]); ?></td><td><a href="<?="/".$fathr->controller->config['sitepath']."fathr_admin/doPageDelete/".$row["id"]?>">Delete</a> - <a href="<?="/".$fathr->controller->config['sitepath']."fathr_admin/pageEdit/".$row["id"]?>">Edit</a></td></tr><?
 		}?>
     	
     </table>

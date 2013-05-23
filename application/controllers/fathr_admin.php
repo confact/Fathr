@@ -148,7 +148,8 @@ class Fathr_admin extends Fathr_cms {
 			$this->load->model("fathr_page_model", true);
 			$this->pagequery = $this->fathr_page_model->getPage($id);
 			$this->pagesquery = $this->fathr_page_model->getSidebarsForPageSmall($id);
-			$this->page = mysql_fetch_array($this->pagequery);
+			$this->page = $this->pagequery->getArray();
+			$this->page = $this->page[0];
 			$this->theme->setMainView("fathr_adminPageEdit");
 			$this->theme->setHeaderTitle("Edit a Page <small>Here will you edit a page</small>");
 			$this->theme->render();

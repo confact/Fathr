@@ -4,7 +4,17 @@ class Fathr_settings extends Model {
 	function getSettings()
 	{
 		$query = $this->db->get("{$this->config['table_tag']}settings");
-		return $query->getArray();
+		if(!$query) return array();
+		$arrayorg = $query->getArray();
+		$array = array();
+		foreach($arrayorg as $row)
+		{
+			foreach($row as $key => $value)
+			{
+				$array[$row["key"]] = $row["value"];
+			}
+		}
+		return $array;
 	}
 	function setSettings($sitename, $url, $theme, $blogy)
 	{

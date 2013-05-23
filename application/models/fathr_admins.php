@@ -5,8 +5,8 @@ class Fathr_admins extends Model {
 	{
 		$query = $this->db->query("SELECT id from {$this->config['table_tag']}admins WHERE username='{$username}' and password='{$password}' LIMIT 1");
 		$found = false;
-		$row = $query[0];
-		if($row['id'] != "")
+		$row = $query->getArray();
+		if($row[0]['id'] != "")
 		{
 			$found = true;
 		}

@@ -9,7 +9,7 @@ if($this->error != "")
 <?
 }
 if($fathr->controller->settings['blogyindex']) {
-while($row = mysql_fetch_array($fathr->controller->pagequery))
+foreach($fathr->controller->pagequery->getArray() as $row)
 {
 ?>
 <h2><a href="<? echo '/'.$fathr->controller->config['sitepath'].'fathr_page/page/'.$row['id']; ?>"><?=$row['headline']?></a> <? if($row['dated'])

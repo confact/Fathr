@@ -28,8 +28,10 @@ class Fathr_frontcontroller extends Fathr_cms {
 				$this->pagequery = $this->fathr_page_model->getAllPagesIndexed();
 				$this->theme->setMainView("fathr_indexPages");
 				$sidebarquery = $this->fathr_page_model->getSidebarIndex();
-				$this->sidebar = mysql_fetch_array($sidebarquery);
-				$this->theme->setSidebar($this->sidebar['text'], $this->sidebar['sidebarside']);
+				$this->sidebar = $sidebarquery->getArray();
+				if(count($this->sidebar) > 0) {
+					$this->theme->setSidebar($this->sidebar['text'], $this->sidebar['sidebarside']);
+				}
 			}
 			else {
 				$this->pagequery = $this->fathr_page_model->getPageIndex();

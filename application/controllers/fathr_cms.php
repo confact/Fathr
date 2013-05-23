@@ -9,14 +9,15 @@ class Fathr_cms extends Controller {
 		$this->load->helper("db");
 		$this->load->model("fathr_menu", true);
 		$this->load->model("fathr_settings", true);
-		$menuquery = $this->fathr_menu->getMenu();
+		$menuquery = $this->fathr_menu->getMenu()->getArray();
 		if (is_array($menuquery)) {
 			foreach($menuquery as $row)
 			{
-				$this->menu[$row[1]] = $row[2];
+				$this->menu[$row["names"]] = $row["url"];
 			}
 		}
-		$settingsquery = $this->fathr_settings->getSettings();
+		
+		$this->settings = $this->fathr_settings->getSettings();
 		if(isset($this->settings["theme"]))
 		{
 			$this->load->theme($this->settings["theme"]);

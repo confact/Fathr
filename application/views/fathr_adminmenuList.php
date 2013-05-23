@@ -1,5 +1,5 @@
 	<? 	
-    while($row = mysql_fetch_array($fathr->controller->menulistmodal))
+    foreach($fathr->controller->menulistmodal->getArray() as $row)
 	{?>
 	<div id="modal-update<?=$row[0]?>" class="modal hide fade">
             <div class="modal-header">
@@ -53,9 +53,9 @@
     	<tr><th>Name</th><th>URL</th><th>Actions</th></tr>
     	</thead>
     	<? 	
-    	while($row = mysql_fetch_array($fathr->controller->menulist))
+    	foreach($fathr->controller->menulist->getArray() as $row)
 		{
-			?><tr><td><?=$row[1]?></td><td><?=$row[2]?></td><td><a href="<?="/".$fathr->controller->config['sitepath']."fathr_admin/doMenuDelete/".$row[0]?>">Delete</a> - <a href="#" data-controls-modal="modal-update<?=$row[0]?>" data-backdrop="true" data-keyboard="true">Update</a></td></tr><?
+			?><tr><td><?=$row["names"]?></td><td><?=$row["url"]?></td><td><a href="<?="/".$fathr->controller->config['sitepath']."fathr_admin/doMenuDelete/".$row["id"]?>">Delete</a> - <a href="#" data-controls-modal="modal-update<?=$row[0]?>" data-backdrop="true" data-keyboard="true">Update</a></td></tr><?
 		}?>
     	
     </table>
