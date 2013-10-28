@@ -4,9 +4,6 @@ This is a schoolwork i did for a course on www.bth.se
 
 It is under work, when it's more or less complete, it will be inspired on CodeIgniter which i really digg.
 
-### Just Framework
-This branch is just the framework for those who want it clean and just code on.
-
 ### Contribute
 We are in need of helpers, fixes and improvements. Be free to do pull-requests and report bugs and request helpers in the issues-tab.
 
