@@ -3,3 +3,4 @@
 /phpunit/.DS_Store
 /config/config.php
 /config/db.php
+/nbproject/private/
