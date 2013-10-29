@@ -120,6 +120,18 @@ class db {
         return $result;
     }
 
+    /**
+     * @access public
+     * @return mixed
+     */
+    public function last_insert() {
+        if ($this->mysqli) {
+            $result = $this->conn->insert_id;
+        } else {
+            $result = mysql_insert_id($this->conn);
+        }
+        return $result;
+    }
 
     /**
      * close database connection function.
