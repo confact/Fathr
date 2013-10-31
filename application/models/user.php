@@ -1,9 +1,16 @@
 <?php
+/**
+ * A example model, its here you should call the database and queries.
+ */
 class User extends Model {
 
-	function test()
-	{
-		echo "test";
-	}
+    /**
+     * just echoes test for testing
+     */
+    function test() {
+        echo "test";
+    }
+
 }
+
 ?>
