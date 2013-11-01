@@ -88,10 +88,9 @@ class db {
     public function create_table($tablename, $columns = array(), $primary = "id") {
         $column_text = "";
         foreach ($columns as $key => $value) {
-            $column_text += "`" . $key . "` " . strtoupper($value) . ", 
-			";
+            $column_text .= "`" . $key . "` " . strtoupper($value) . ", ";
         }
-        $result = $this->do_query("CREATE TABLE `" . $tablename . "` (" . $column_text . " PRIMARY KEY (`".$primary."`));");
+        $result = $this->do_query("CREATE TABLE `" . $tablename . "` (" . $column_text . " PRIMARY KEY (`".$primary."`)) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;");
 
         if ($result) {
             return true;
