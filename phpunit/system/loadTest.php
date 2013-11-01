@@ -57,18 +57,6 @@ class loadTest extends PHPUnit_Framework_TestCase {
         $this->fail('An expected exception has not been raised.');
 	}
 	
-	function testModelWithDatabase()
-	{
-		try {
-            $this->load->model("user", true);
-            return;
-        }
- 
-        catch (Exception $expected) {
-        	$this->fail($expected->getMessage());
-        }
-	}
-	
 	function testHelperWithExcpetion()
 	{
 		try {
