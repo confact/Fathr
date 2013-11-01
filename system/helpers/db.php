@@ -140,7 +140,9 @@ class db {
      */
     private function close() {
         if ($this->mysqli) {
-            $this->conn->close();
+        	if($this->conn != "" && $this->conn != false && $this->conn != true) {
+            	$this->conn->close();
+            }
         } else {
         	if($this->conn != "" && $this->conn != false && $this->conn != true) {
 	        	mysql_close($this->conn);
