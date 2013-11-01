@@ -22,7 +22,7 @@ class dbTest extends PHPUnit_Framework_TestCase {
 	function testCreateTable()
 	{
 		$tbl_name = "test";
-		$return = $this->db->create_table($tbl_name, array("id" => "int(10) NOT NULL AUTO INCREMENT", "key" => "varchar(100) NOT NULL"), "id");
+		$return = $this->db->create_table($tbl_name, array("id" => "int(10) NOT NULL AUTO_INCREMENT", "key" => "varchar(100) NOT NULL"), "id");
 		
 		$this->assertTrue($return);
 		$this->db->query("DROP TABLE IF EXISTS ".$tbl_name." CASCADE;");
