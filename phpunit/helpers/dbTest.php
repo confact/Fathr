@@ -1,10 +1,22 @@
 <?php
 class dbTest extends PHPUnit_Framework_TestCase {
 
+	private $load = "";
+	private $controller = "";
+
 	function __construct() {
 		$this->controller = new Example();
 		$this->load = new load($this->controller);
-		$this->load->helper("db");
+	}
+	
+	function testLoadDb()
+	{
+		global $fathr;
+        $this->load->helper("db");
+        $this->assertEquals($this->controller->db, $fathr->db);
+        
+        return;
+        
 	}
 	
 	function testCreateTable()

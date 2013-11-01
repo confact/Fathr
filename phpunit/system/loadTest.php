@@ -69,15 +69,6 @@ class loadTest extends PHPUnit_Framework_TestCase {
  
         $this->fail('An expected exception has not been raised.');
 	}
-	function testHelperDb()
-	{
-		global $fathr;
-        $this->load->helper("db");
-        $this->assertEquals($this->controller->db, $fathr->db);
-        
-        return;
-        
-	}
 		
 	function testLoadFather()
 	{
