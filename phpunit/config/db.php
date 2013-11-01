@@ -9,6 +9,7 @@ if(!isset($DB))
 {
 	$DB = "mysql";
 }
+global $db_config;
 $db_config['db_host'] = $mysqladdress;
 $db_config['db_dbname'] = $mysqldatabase;
 $db_config['db_user'] = $mysqlusername;

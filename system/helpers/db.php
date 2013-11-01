@@ -5,15 +5,15 @@
  * This helper is not tested!
  */
 class db {
+
     private static $instance = "";
     private $conn = "";
     private $mysqli = false;
     private $config = array();
 
     public function __construct() {
-        require_once('config/db.php');
+    	global $db_config;
         $this->config = $db_config;
-        unset($db_config);
         $this->open();
     }
 
@@ -84,13 +84,12 @@ class db {
      * @param array $columns ["columnname"] => "data_type" (default: array())
      * @return boolean
      */
-    public function create_table($tablename, $columns = array()) {
+    public function create_table($tablename, $columns = array(), $primary = "id") {
         $column_text = "";
         foreach ($columns as $key => $value) {
-            $column_text += $key . " " . $value . ", 
-			";
+            $column_text .= "`" . $key . "` " . strtoupper($value) . ", ";
         }
-        $result = $this->do_query("CREATE TABLE " . $tablename . " (" . $column_text . ");");
+        $result = $this->do_query("CREATE TABLE `" . $tablename . "` (" . $column_text . " PRIMARY KEY (`".$primary."`)) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;");
 
         if ($result) {
             return true;
@@ -143,7 +142,9 @@ class db {
         if ($this->mysqli) {
             $this->conn->close();
         } else {
-            mysql_close($this->conn);
+        	if($this->conn != "" && $this->conn != false && $this->conn != true) {
+	        	mysql_close($this->conn);
+        	}
         }
     }
 

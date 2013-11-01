@@ -11,10 +11,46 @@ $mysqlusername=getenv('mysqlusername')  ?: 'root';
 global $mysqlpassword;
 $mysqlpassword=getenv('mysqlpassword')  ?: 'root';
 global $mysqladdress;
+<<<<<<< HEAD
 $mysqladdress=getenv('mysqladdress')  ?: ':/Applications/MAMP/tmp/mysql/mysql.sock';
 require_once('config/config.php');
 
 
+=======
+$mysqladdress = getenv('mysqladdress') ? : ':/var/mysql/mysql.sock';
+$mysqlcheck = getenv('DB') ? : "mysql";
+
+if($mysqlcheck == "mysql") {
+	$mysqlcheck = false;
+}
+else {
+	$mysqlcheck = true;
+}
+
+require_once('config/config.php');
+
+
+global $db_config;
+
+$db_config['db_host'] = $mysqladdress;
+$db_config['db_dbname'] = $mysqldatabase;
+$db_config['db_user'] = $mysqlusername;
+$db_config['db_password'] = $mysqlpassword;
+$db_config['mysqli'] = $mysqlcheck;
+
+class bootstrap {
+
+    private $directory;
+
+    public function __construct($directory_name, $rootdir) {
+        $this->directory = $rootdir . '/' . $directory_name;
+    }
+
+    public function autoload($class_name) {
+        $filename = strtolower($class_name) . '.php';
+        
+        $file = "../" . $this->directory . '/' . $filename;
+>>>>>>> 258f950... fixed better db-support and bug fixes for database.
 
 
 class bootstrap
