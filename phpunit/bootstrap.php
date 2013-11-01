@@ -12,8 +12,26 @@ $mysqlusername = getenv('mysqlusername') ? : 'root';
 global $mysqlpassword;
 $mysqlpassword = getenv('mysqlpassword') ? : 'root';
 global $mysqladdress;
-$mysqladdress = getenv('mysqladdress') ? : ':/Applications/MAMP/tmp/mysql/mysql.sock';
+$mysqladdress = getenv('mysqladdress') ? : ':/var/mysql/mysql.sock';
+$mysqlcheck = getenv('DB') ? : "mysql";
+
+if($mysqlcheck == "mysql") {
+	$mysqlcheck = false;
+}
+else {
+	$mysqlcheck = true;
+}
+
 require_once('config/config.php');
+
+
+global $db_config;
+
+$db_config['db_host'] = $mysqladdress;
+$db_config['db_dbname'] = $mysqldatabase;
+$db_config['db_user'] = $mysqlusername;
+$db_config['db_password'] = $mysqlpassword;
+$db_config['mysqli'] = $mysqlcheck;
 
 class bootstrap {
 
@@ -25,6 +43,7 @@ class bootstrap {
 
     public function autoload($class_name) {
         $filename = strtolower($class_name) . '.php';
+        
         $file = "../" . $this->directory . '/' . $filename;
 
         if (file_exists($file) == false) {

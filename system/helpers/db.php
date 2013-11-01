@@ -12,9 +12,8 @@ class db {
     private $config = array();
 
     public function __construct() {
-        require_once('config/db.php');
+    	global $db_config;
         $this->config = $db_config;
-        unset($db_config);
         $this->open();
     }
 
