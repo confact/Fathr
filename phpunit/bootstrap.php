@@ -11,12 +11,6 @@ $mysqlusername=getenv('mysqlusername')  ?: 'root';
 global $mysqlpassword;
 $mysqlpassword=getenv('mysqlpassword')  ?: 'root';
 global $mysqladdress;
-<<<<<<< HEAD
-$mysqladdress=getenv('mysqladdress')  ?: ':/Applications/MAMP/tmp/mysql/mysql.sock';
-require_once('config/config.php');
-
-
-=======
 $mysqladdress = getenv('mysqladdress') ? : ':/var/mysql/mysql.sock';
 $mysqlcheck = getenv('DB') ? : "mysql";
 
@@ -50,23 +44,6 @@ class bootstrap {
         $filename = strtolower($class_name) . '.php';
         
         $file = "../" . $this->directory . '/' . $filename;
->>>>>>> 258f950... fixed better db-support and bug fixes for database.
-
-
-class bootstrap
-{
-	private $directory;
-	
-	public function __construct($directory_name, $rootdir)
-	{
-		$this->directory = $rootdir . '/' . $directory_name;
-	}
-	
-	public function autoload($class_name)
-	{
-		$filename = strtolower($class_name).'.php';
-		$file = "../".$this->directory.'/'.$filename;
-		
 		if(file_exists($file) == false)
 		{
 			return false;
