@@ -11,12 +11,6 @@ test:
         config:
             - "phpunit/phpunit.xml"
         run_from: "phpunit/"
-    php_mess_detector:
-        rules: 
-            - "codesize"
-            - "unusedcode" 
-            - "naming"
-        allow_failures: true
 
 complete:
 
