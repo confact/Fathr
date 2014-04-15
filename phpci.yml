@@ -3,12 +3,14 @@ build_settings:
     prefer_symlink: false
 
 setup:
-    - "php composer.phar install"
+    composer:
+        action: "install"
 test:
     php_unit:
         config:
             - "phpunit.xml"
-        directory: "phpunit/"
+        run_from: "phpunit/"
+        directory: "phpunit/Results/"
 
 complete:
 
