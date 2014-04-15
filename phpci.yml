@@ -8,7 +8,6 @@ test:
     php_unit:
         config:
             - "phpunit/phpunit.xml"
-        directory: "phpunit/Results/"
 
 complete:
 
