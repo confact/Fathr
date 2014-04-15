@@ -6,7 +6,7 @@ setup:
     - "php composer.phar install"
 test:
     php_unit:
-    	config:
+        config:
             - "path/to/phpunit.xml"
         directory: "phpunit/"
 
