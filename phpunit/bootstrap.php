@@ -32,7 +32,7 @@ $db_config['db_user'] = $mysqlusername;
 $db_config['db_password'] = $mysqlpassword;
 $db_config['mysqli'] = $mysqlcheck;
 
-class bootstrap {
+class bootstrapeer {
 
     private $directory;
 
@@ -51,13 +51,13 @@ class bootstrap {
 	}
 }
 	//setup the core loaders
-	$core_loader = new bootstrap("core", "system");
-	$helpers_loader = new bootstrap("helpers", "system");
+	$core_loader = new bootstrapeer("core", "system");
+	$helpers_loader = new bootstrapeer("helpers", "system");
 	
 	//setup the application loaders
-	$controllers_loader = new bootstrap("controllers", "application");
-	$models_loader = new bootstrap("models", "application");
-	$views_loader = new bootstrap("views", "application");
+	$controllers_loader = new bootstrapeer("controllers", "application");
+	$models_loader = new bootstrapeer("models", "application");
+	$views_loader = new bootstrapeer("views", "application");
 	
 	//register all the loaders
 	spl_autoload_register(array($core_loader, 'autoload'));
