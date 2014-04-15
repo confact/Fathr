@@ -42,7 +42,7 @@ class bootstrap {
 
     public function autoload($class_name) {
         $filename = strtolower($class_name) . '.php';
-        $file = "../" . $this->directory . '/' . $filename;
+        $file = "" . $this->directory . '/' . $filename;
         var_dump($file);
 		if(file_exists($file) == false)
 		{
