@@ -9,9 +9,7 @@ setup:
 test:
     php_unit:
         config:
-            - "phpunit.xml"
-        run_from: "phpunit/"
-        directory: "tests/"
+            - "phpunit/phpunit.xml"
 
 complete:
 
