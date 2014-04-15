@@ -5,13 +5,13 @@ error_reporting(E_ALL | E_STRICT);
 
 
 global $mysqldatabase;
-$mysqldatabase = getenv('mysqldatabase')  ?: 'myapp_test';
+$mysqldatabase = getenv('mysqldatabase')  ?: 'phpci_test';
 global $mysqlusername;
-$mysqlusername=getenv('mysqlusername')  ?: 'root';
+$mysqlusername=getenv('mysqlusername')  ?: 'phpci_test';
 global $mysqlpassword;
-$mysqlpassword=getenv('mysqlpassword')  ?: 'root';
+$mysqlpassword=getenv('mysqlpassword')  ?: 'tester12!';
 global $mysqladdress;
-$mysqladdress = getenv('mysqladdress') ? : ':/var/mysql/mysql.sock';
+$mysqladdress = getenv('mysqladdress') ? : 'localhost';
 $mysqlcheck = getenv('DB') ? : "mysql";
 
 if($mysqlcheck == "mysql") {
