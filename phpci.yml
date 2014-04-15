@@ -7,6 +7,6 @@ setup:
 test:
     php_unit:
         directory: "phpunit/"
-        args: "--bootstrap 'phpunit/bootstrap.php' --configuration 'phpunit/phpunit.xml'"
+        args: " --configuration 'phpunit/phpunit.xml'"
 
 complete:
