@@ -12,7 +12,7 @@ global $mysqlpassword;
 $mysqlpassword=getenv('mysqlpassword')  ?: 'tester12!';
 global $mysqladdress;
 $mysqladdress = getenv('mysqladdress') ? : 'localhost';
-$mysqlcheck = getenv('DB') ? : "mysql";
+$mysqlcheck = getenv('DB') ? : "mysqli";
 
 if($mysqlcheck == "mysql") {
 	$mysqlcheck = false;
