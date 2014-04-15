@@ -1,0 +1,12 @@
+build_settings:
+    verbose: false
+    prefer_symlink: false
+
+setup:
+
+test:
+    php_unit:
+        directory: "phpunit/"
+        args: "--bootstrap 'phpunit/bootstrap.php' --configuration 'phpunit/phpunit.xml'"
+
+complete:
