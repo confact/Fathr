@@ -1,16 +1,16 @@
 build_settings:
-    verbose: false
-    prefer_symlink: false
+    ignore:
+        - "vendor"
+        - "tests"
 
 setup:
-    - "wget http://getcomposer.org/composer.phar"
-    - "php composer.phar install"
+    composer:
+        action: "install"
 test:
     php_unit:
         config:
             - "phpunit.xml"
         run_from: "phpunit/"
-        directory: "phpunit/Results/"
 
 complete:
 
