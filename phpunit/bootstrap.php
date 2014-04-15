@@ -42,13 +42,13 @@ class bootstrap {
 
     public function autoload($class_name) {
         $filename = strtolower($class_name) . '.php';
-        
         $file = "../" . $this->directory . '/' . $filename;
+        var_dump($file);
 		if(file_exists($file) == false)
 		{
 			return false;
 		}
-		include($file);
+		include_once($file);
 	}
 }
 	//setup the core loaders
