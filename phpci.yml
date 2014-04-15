@@ -11,6 +11,7 @@ test:
         config:
             - "phpunit.xml"
         run_from: "phpunit/"
+        directory: "tests/"
 
 complete:
 
