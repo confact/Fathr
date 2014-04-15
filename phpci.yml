@@ -3,7 +3,7 @@ build_settings:
     prefer_symlink: false
 
 setup:
-	- "wget http://getcomposer.org/composer.phar"
+    - "wget http://getcomposer.org/composer.phar"
     - "php composer.phar install"
 test:
     php_unit:
