@@ -11,9 +11,6 @@ test:
         config:
             - "phpunit/phpunit.xml"
         run_from: "phpunit/"
-        directory:
-            - "tests/"
-        coverage: "tests/logs/coverage"
 
 complete:
 
