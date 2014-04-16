@@ -1,14 +1,14 @@
 <?php
 
 /**
- * The class that helps the user to load helpers, 
+ * The class that helps the user to load helpers,
  * models and views very easy, by calling this functions bellow.
  * @author confact <hakan@dun.se>
  */
 class load {
 
     /**
-     * 
+     *
      * @param Controller $controller
      */
     function __construct(&$controller) {
@@ -17,11 +17,11 @@ class load {
 
     /**
      * just simple include the view.
-     * 
+     *
      * @global Father $fathr
      * @param string $name
      * @param boolean $return
-     * 
+     *
      * @return void|string
      */
     function view($name, $return = false) {
@@ -38,11 +38,11 @@ class load {
 
     /**
      * check if the model should load db, then save it to the controller.
-     * 
+     *
      * @global Father $fathr
      * @param string $name
      * @param boolean $db
-     * 
+     *
      * @throws Exception
      */
     function model($name, $db = false) {
@@ -61,7 +61,7 @@ class load {
 
     /**
      * check if the helper is the db or not, then save it to the controller.
-     * 
+     *
      * @global Father $fathr
      * @param string $name
      * @throws Exception
@@ -86,7 +86,7 @@ class load {
 
     /**
      * load the theme class with the right theme chosen.
-     * 
+     *
      * @global Father $fathr
      * @param string $theme
      */
