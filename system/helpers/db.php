@@ -12,14 +12,14 @@ class db {
     private $config = array();
 
     public function __construct() {
-    	global $db_config;
+        global $db_config;
         $this->config = $db_config;
         $this->open();
     }
 
     /**
      * open database connection function.
-     * 
+     *
      * @access private
      * @return void
      */
@@ -46,7 +46,7 @@ class db {
 
     /**
      * query function.
-     * 
+     *
      * @access public
      * @param mixed $string
      * @return Databasemodel
@@ -62,7 +62,7 @@ class db {
 
     /**
      * do_query function.
-     * 
+     *
      * @access private
      * @param mixed $string
      * @return void
@@ -78,7 +78,7 @@ class db {
 
     /**
      * create table function.
-     * 
+     *
      * @access public
      * @param mixed $tablename
      * @param array $columns ["columnname"] => "data_type" (default: array())
@@ -100,7 +100,7 @@ class db {
 
     /**
      * get function.
-     * 
+     *
      * @access public
      * @param mixed $tablename
      * @param mixed $limit (default: null)
@@ -134,19 +134,19 @@ class db {
 
     /**
      * close database connection function.
-     * 
+     *
      * @access private
      * @return void
      */
     private function close() {
         if ($this->mysqli) {
-        	if($this->conn != "" && $this->conn != false && $this->conn != true) {
-            	$this->conn->close();
+            if($this->conn != "" && $this->conn != false && $this->conn != true) {
+                $this->conn->close();
             }
         } else {
-        	if($this->conn != "" && $this->conn != false && $this->conn != true) {
-	        	mysql_close($this->conn);
-        	}
+            if($this->conn != "" && $this->conn != false && $this->conn != true) {
+                mysql_close($this->conn);
+            }
         }
     }
 
