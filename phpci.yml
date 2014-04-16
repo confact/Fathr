@@ -16,7 +16,7 @@ test:
         path: "system"
         ignore:
             - "application/views"
-        standard: "PSR1,PSR2"
+        standard: "Symfony2"
     php_loc:
 
 complete:
