@@ -13,6 +13,7 @@ test:
         run_from: "phpunit/"
         coverage: "build/coverage"
     php_code_sniffer:
+        path: "system"
         ignore:
             - "application/views"
         standard: "PSR1,PSR2"
