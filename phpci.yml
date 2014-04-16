@@ -12,6 +12,11 @@ test:
             - "phpunit/phpunit.xml"
         run_from: "phpunit/"
         coverage: "build/coverage"
+    php_code_sniffer:
+        ignore:
+            - "application/views"
+        standard: "PSR1,PSR2"
+    php_loc
 
 complete:
 
